@@ -1,0 +1,16 @@
+{
+  "name": "gdsc-member-management-system",
+  "version": "1.0.0",
+  "description": "The GDSC DLSU Member Management System is a web app that streamlines member tracking and organization, reducing the administrative workload for officers and supporting the growth of the GDSC DLSU community.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.4.0",
+    "prettier": "^3.3.0"
+  }
+}
