@@ -95,11 +95,6 @@ h2 {
     cursor: pointer;
 }
 
-.avatar-table {
-    height: 30px;
-    margin-left: 10px;
-}
-
 .content {
     align-self: center;
     display: flex;
@@ -135,6 +130,12 @@ hr {
     display: flex;
     gap: 10px;
     justify-content: space-between;
+    align-items: center;
+}
+
+.left-profile-card {
+    display: flex;
+    gap: 15px;
     align-items: center;
 }
 
@@ -227,6 +228,21 @@ hr {
 
 .warnings-list .status-icon {
     font-size: 20px;
+}
+
+.status-icon {
+    border-radius: 50px;
+    height: 16px;
+    width: 16px;
+    margin-left: 18px;
+}
+
+.green {
+    background-color: rgb(19, 145, 19);
+}
+
+.orange {
+    background-color: orange;
 }
 
 .warning-table, .warning-details {

@@ -1,0 +1,84 @@
+
+    <div class="top-nav">
+        <div class="orgname-container">
+            Google Developers Student Clubs — MMS Admin
+        </div>
+        <div class = "logout-btn">
+            Logout
+        </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2>Warnings Tracker</h2>
+        <div class="content">
+            <div class="warnings-tracker">
+                <div class="profile-card">
+                    <div class="left-profile-card">
+                        <div class="profile-image">
+                            <span class="emoji"><img src="images/Avatar.svg"></span>
+                        </div>
+                        <div class="profile-info">
+                            <span><h3>{{officer.lName}}, {{officer.fName}}</h3></span>
+                            <p>Officer</p>
+                        </div>
+                    </div>
+                    <button class="edit-button">EDIT</button>
+                </div>   
+                <div class="profile-body">
+                    <div class="profile-details">
+                        <div class="info-item">
+                            <span class="label">Contact Number:</span>
+                            <span class="value">{{officer.contact}}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Email Address:</span>
+                            <span class="value">{{officer.email}}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">ID #:</span>
+                            <span class="value">{{officer.id}}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Disciplinary Status:</span>
+                            <span class="value">{{officer.status}}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Violations:</span>
+                            <span class="value pending">{{officer.violations}} Pending</span>
+                        </div>
+                    </div>
+                    <a href="#" class="dispute-link">Dispute a Report</a>
+                </div> 
+            </div>
+
+            <div class="warnings-list">
+                <div class="warning-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>OIC</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each officer.warnings}}
+                            <tr>
+                                <td>{{title}}</td>
+                                <td>{{date.$date}}</td>
+                                <td>{{oic}}</td>
+                                <td><div class="status-icon {{#if isPending}}green{{else}}orange{{/if}}"></div></td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="warning-details">
+                    <h3>Warning 1 Title</h3>
+                    <p>Description</p>
+                </div>
+            </div>
+        </div>
+    </div>

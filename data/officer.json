@@ -1,0 +1,43 @@
+[{
+  "fName": "Kyle",
+  "lName": "Santos",
+  "contact": 9283366175, 
+  "email": "kyle_adrian_santos@dlsu.edu.ph",
+  "id": 12201234,
+  "status": "Good Standing",
+  "violations": 2,
+  "warnings": [
+    {
+      "title": "Warning 1 Title",
+      "date": {
+        "$date": "2024-03-10T16:00:00.000Z"
+      },
+      "oic": "Member",
+      "isPending": true
+    },
+    {
+      "title": "Warning 2 Title",
+      "date": {
+        "$date": "2024-03-10T16:00:00.000Z"
+      },
+      "oic": "Officer",
+      "isPending": false
+    },
+    {
+      "title": "Warning 3 Title",
+      "date": {
+        "$date": "2024-03-10T16:00:00.000Z"
+      },
+      "oic": "Member",
+      "isPending": true
+    },
+    {
+      "title": "Warning 4 Title",
+      "date": {
+        "$date": "2024-03-10T16:00:00.000Z"
+      },
+      "oic": "Member",
+      "isPending": false
+    }
+  ]
+}]

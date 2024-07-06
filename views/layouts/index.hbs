@@ -1,9 +1,19 @@
 <html>
     <head>
-        <link rel="stylesheet" href="/public/style.css">
+        <base href="/">
         <title> {{title}} </title>
+
+        {{#if isForOfficer}}
+            <link rel="stylesheet" href="/styles/officer.css">
+        {{else}}
+            <link rel="stylesheet" href="/styles/style.css">
+        {{/if}}
+
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     </head>
     <body>
-{{{body}}}
+        {{{body}}}
     </body>
 </html>
