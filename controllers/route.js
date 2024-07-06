@@ -10,7 +10,7 @@ function add(server){
     server.get('/', (req, res) => {
         res.render('landing-page', { 
             layout: 'index',
-            title: "Landing",
+            title: "Home",
         });
             
     });
