@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Officers UI</title>
+    <base href="../">
+    <link rel="stylesheet" href="public/styles/officer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="top-nav">
+        <div class="orgname-container">
+            Google Developers Student Clubs — MMS Admin
+        </div>
+        <div class = "logout-btn">
+            Logout
+        </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2>Warnings Tracker</h2>
+        <div class="content">
+            <div class="warnings-tracker">
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <span class="emoji"><img src="public/images/Avatar.svg"></span>
+                    </div>
+                    <div class="profile-info">
+                        <span><h3>Butler, Dwayne</h3></span>
+                        <p>Officer</p>
+                    </div>
+                    <button class="edit-button">EDIT</button>
+                </div>   
+                <div class="profile-body">
+                    <div class="profile-details">
+                        <div class="info-item">
+                            <span class="label">Contact Number:</span>
+                            <span class="value">**********</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Email Address:</span>
+                            <span class="value">****@dlsu.edu.ph</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">ID #:</span>
+                            <span class="value">121*****</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Disciplinary Status:</span>
+                            <span class="value">Good Standing</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Violations:</span>
+                            <span class="value pending">1 Pending</span>
+                        </div>
+                    </div>
+                    <a href="#" class="dispute-link">Dispute a Report</a>
+                </div> 
+            </div>
+
+            <div class="warnings-list">
+                <div class="warning-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>OIC</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Warning 1 Title</td>
+                                <td>122</td>
+                                <td>Member</td>
+                                <td><span class="status-icon"><img class="avatar-table" src="public/images/Avatar.svg"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Warning 2 Title</td>
+                                <td>121</td>
+                                <td>Officer</td>
+                                <td><span class="status-icon"><img class="avatar-table" src="public/images/Avatar.svg"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Warning 3 Title</td>
+                                <td>121</td>
+                                <td>Officer</td>
+                                <td><span class="status-icon"><img class="avatar-table" src="public/images/Avatar.svg"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Warning 4 Title</td>
+                                <td>121</td>
+                                <td>Officer</td>
+                                <td><span class="status-icon"><img class="avatar-table" src="public/images/Avatar.svg"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="warning-details">
+                    <h3>Warning 1 Title</h3>
+                    <p>Description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

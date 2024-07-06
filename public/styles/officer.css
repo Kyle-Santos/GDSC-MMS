@@ -1,0 +1,262 @@
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background-color: #2C2C2B;
+    color: #E1E1E1;
+    height: 100vh
+}
+
+
+/*Style for top-nav*/
+.top-nav
+{
+    background-color:#E1E1E1;
+    color: #2C2C2B;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-left: 80px;
+    padding-right: 80px;
+    width: 90vw;
+    height: 20px;
+    cursor: default;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+
+.orgname-container
+{
+    font-size: 20px;
+    width: 50%;
+}
+
+.logout-btn
+{
+    background-color: #2C2C2B;
+    color:white;
+    border-radius: 8px;
+    justify-content: center;
+    margin-right:0px;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    /* Button Shadow */
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.logout-btn:hover
+{
+    cursor: pointer;
+    background-color: #484848;
+}
+/*  */
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-width: 1000px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    margin-top: 40px;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%; /* 44px */
+}
+
+.header {
+    color: #2C2C2B;
+
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 30px */
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E1E1E1;
+    padding: 10px 20px;
+}
+
+.logout-button {
+    background-color: #ff4b4b;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.avatar-table {
+    height: 30px;
+    margin-left: 10px;
+}
+
+.content {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    margin-top: 10px;
+    color: #2C2C2B;
+    width: 100%;
+    min-height: 500px;
+}
+
+hr {
+    color: black;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.warnings-tracker {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 25%;
+    gap: 17px;
+}
+
+.profile-card {
+    border-radius: 8px;
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #2C2C2B;
+}
+
+.profile-info p {
+    margin: 0;
+    font-size: 16px;
+    color: #666;
+}
+.edit-button {
+    align-self: right;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    height: 70%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.profile-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.info-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 18px 0 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.info-item .label {
+    font-weight: bold;
+}
+
+.info-item .value {
+    text-align: right;
+}
+
+.info-item .value.pending {
+    color: #900;
+    font-weight: bold;
+}
+
+/* .pending {
+    color: red;
+} */
+
+.dispute-link {
+    text-align: center;
+    color: #2C2C2B;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.warnings-list {
+    color: #E1E1E1;
+    display: flex;
+    flex-direction: column;
+    width: 70%
+}
+
+.warnings-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.warnings-list th, .warnings-list td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.warnings-list .status-icon {
+    font-size: 20px;
+}
+
+.warning-table, .warning-details {
+    padding: 25px 25px;
+    border-radius: 8px;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.04);
+    height: 50%;
+    max-height: 50%;
+    overflow-y: auto; /* Add vertical scroll */
+}
+
+
+
+.warning-table {
+    padding-top: 20px;
+}
+
+.warning-details {
+    margin-top: 20px;
+}
+
+.warning-details h3 {
+    margin: 0;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.warning-details p {
+    margin: 0;
+    color: #666;
+    font-size: 16px;
+}
