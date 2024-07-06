@@ -15,7 +15,6 @@ body
     padding-left: 80px;
     padding-right: 80px;
     height: 10%;
-    width: 100%;
     cursor: default;
     display: inline-flex;
     align-items: center;
@@ -71,10 +70,10 @@ body
 }
 
 /*Style for Title in Main Page*/
-
 .main-container{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
 }
 .mms-container
 {
@@ -84,7 +83,8 @@ body
     display: inline-flex;
     flex-direction: column;
     gap: 24px;
-    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .mms-title
