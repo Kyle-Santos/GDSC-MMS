@@ -1,5 +1,6 @@
 body
 {
+    margin: 0;
     background-color: #2C2C2B;
     font-family: "Inter", sans-serif;
     display: flex;
@@ -17,7 +18,8 @@ body
     padding-right: 80px;
     height: 20px;
     cursor: default;
-    display: inline-flex;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     font-size: 16px;
 }
@@ -25,8 +27,7 @@ body
 .orgname-container
 {
     font-size: 20px;
-    margin-right: 45%;
-    width: 750px;
+    width: 50%;
 }
 
 .top-nav-button-group-container
