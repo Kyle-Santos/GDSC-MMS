@@ -68,6 +68,10 @@ body
 {
     cursor: pointer;
 }
+.logout-btn:hover
+{
+    background-color: #484848;
+}
 
 /*Style for Title in Main Page*/
 .main-container{
@@ -100,4 +104,35 @@ body
     color: #828282;
     font-size: 24px;
     font-weight: 400;
+}
+
+/*Style of Main Buttons in landing page*/
+.main-btn-container
+{
+    padding-left: 51px;
+    padding-right: 51px;
+    padding-top: 36px;
+    display: inline-flex;
+    flex-direction: row;
+    gap: 7%;
+    justify-content: center;
+}
+
+.officers-btn-container, .events-btn-container, .members-btn-container
+{
+    background-color: #E1E1E1;
+    color: black;
+    width: 341px;
+    height: 343px;
+    border-radius: 2%;
+    font-size: 40px;
+    padding-top: 34px;
+    padding-left: 34px;
+    padding-bottom: 22px;
+}
+
+.officers-btn-container:hover, .events-btn-container:hover, .members-btn-container:hover
+{
+    cursor:pointer;
+    background-color:#eeeeee;
 }
