@@ -1,0 +1,103 @@
+body
+{
+    background-color: #2C2C2B;
+    display: flex;
+    cursor: default;
+}
+
+/*Style for top-nav*/
+.top-nav
+{
+    background-color:#E1E1E1;
+    color: #2C2C2B;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-left: 80px;
+    padding-right: 80px;
+    height: 10%;
+    width: 100%;
+    cursor: default;
+    display: inline-flex;
+    align-items: center;
+}
+.top-nav > *
+{
+    font-size: 20px;
+}
+
+.orgname-container
+{
+    margin-right: 56%;
+    width: 700px;
+}
+
+.top-nav-button-group-container
+{
+    word-wrap: break-word;
+    display: inline-flex;
+    justify-content: flex-end;
+    gap: 48px;
+    align-items:center;
+}
+.top-nav-button-group-container > *
+{
+    font-weight: 500;
+    line-height: 30px;
+    align-items:center;
+}
+
+.members-btn, .events-btn, .logout-btn
+{
+    background-color:#E1E1E1;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    align-items:center;
+    justify-content: center;
+}
+.logout-btn
+{
+    background-color: #2C2C2B;
+    color:white;
+    border-radius: 15%;
+    justify-content: center;
+    margin-right:0px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.members-btn:hover, .events-btn:hover, .logout-btn:hover
+{
+    cursor: pointer;
+}
+
+/*Style for Title in Main Page*/
+
+.main-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.mms-container
+{
+    padding-top: 45px;
+    padding-left: 299px;
+    padding-right: 299px;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.mms-title
+{
+    color: #E1E1E1;
+    font-size: 64px;
+    font-weight: 700;
+    word-wrap:break-word;
+}
+
+.welcome-title
+{
+    color: #828282;
+    font-size: 24px;
+    font-weight: 400;
+}
