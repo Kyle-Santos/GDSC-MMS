@@ -1,0 +1,16 @@
+<div class="top-nav">
+    <div class="orgname-container">
+        Google Developers Student Clubs — MMS Admin
+    </div>
+    <div class = "top-nav-button-group-container">
+        <div class="members-btn">
+            Members
+        </div>
+        <div class = "events-btn">
+            Events
+        </div>
+        <div class = "logout-btn">
+            Logout
+        </div>
+    </div>
+</div>
