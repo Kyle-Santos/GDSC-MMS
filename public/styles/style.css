@@ -14,18 +14,16 @@ body
     padding-bottom: 35px;
     padding-left: 80px;
     padding-right: 80px;
-    height: 10%;
+    height: 20px;
     cursor: default;
     display: inline-flex;
     align-items: center;
-}
-.top-nav > *
-{
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .orgname-container
 {
+    font-size: 20px;
     margin-right: 56%;
     width: 700px;
 }
@@ -57,11 +55,12 @@ body
 {
     background-color: #2C2C2B;
     color:white;
-    border-radius: 15%;
+    border-radius: 8px;
     justify-content: center;
     margin-right:0px;
     padding-left: 24px;
     padding-right: 24px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
 
 .members-btn:hover, .events-btn:hover, .logout-btn:hover
