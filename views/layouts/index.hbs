@@ -5,6 +5,9 @@
 
         {{#if isForOfficer}}
             <link rel="stylesheet" href="/styles/officer.css">
+        {{else if isEvents}}
+            <link rel="stylesheet" href="/styles/top-nav.css">
+            <link rel="stylesheet" href="/styles/events.css">
         {{else}}
             <link rel="stylesheet" href="/styles/style.css">
         {{/if}}

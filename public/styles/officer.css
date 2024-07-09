@@ -106,13 +106,6 @@ h2 {
     min-height: 500px;
 }
 
-hr {
-    color: black;
-    width: 100%;
-    margin: 0;
-    margin-bottom: 15px;
-}
-
 .warnings-tracker {
     display: flex;
     flex-direction: column;

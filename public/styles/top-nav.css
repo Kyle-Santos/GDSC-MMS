@@ -1,0 +1,66 @@
+/*Style for top-nav*/
+.top-nav
+{
+    background-color:#E1E1E1;
+    color: #2C2C2B;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-left: 80px;
+    padding-right: 80px;
+    height: 20px;
+    cursor: default;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+
+.orgname-container
+{
+    font-size: 20px;
+    width: 50%;
+}
+
+.top-nav-button-group-container
+{
+    word-wrap: break-word;
+    display: inline-flex;
+    justify-content: flex-end;
+    gap: 48px;
+    align-items:center;
+}
+.top-nav-button-group-container > *
+{
+    font-weight: 500;
+    line-height: 30px;
+    align-items:center;
+}
+
+.members-btn, .events-btn, .logout-btn
+{
+    background-color:#E1E1E1;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    align-items:center;
+    justify-content: center;
+}
+.logout-btn
+{
+    background-color: #2C2C2B;
+    color:white;
+    border-radius: 8px;
+    justify-content: center;
+    margin-right:0px;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+.members-btn:hover, .events-btn:hover, .logout-btn:hover
+{
+    cursor: pointer;
+}
+.logout-btn:hover
+{
+    background-color: #484848;
+}

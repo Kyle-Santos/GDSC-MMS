@@ -15,13 +15,23 @@ function add(server){
             
     });
 
-    // get officer page
+    // get officer page (for officer accounts)
     server.get('/officer', (req, res) => {
         res.render('officer', { 
             layout: 'index',
             title: "Officer",
             'officer': officer[0],
             isForOfficer: true,
+        });
+            
+    });
+
+    // get events page (admin)
+    server.get('/events', (req, res) => {
+        res.render('events', { 
+            layout: 'index',
+            title: "Events",
+            isEvents: true,
         });
             
     });
