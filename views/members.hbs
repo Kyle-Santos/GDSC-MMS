@@ -1,43 +1,41 @@
 
-    {{>top-nav}}
-    
-    <div class="container">
-        <div id="main-header">
-            <h2>Attendees</h2>
-            <div>
-                <button>+ New Event</button>
-                <select name="event-name" id="event-name">
-                    <option value="GDSC Dev Fest">GDSC Dev Fest</option>
-                    <option value="Event Name 2">Event Name 2</option>
+{{>top-nav}}
+<div class = "container">
+    <h2>Members</h2>
+    <!--Add User and Pending Reports Buttons-->
+    <div class="add-user-container">
+        <div class="add-user-btn">
+            Add User
+        </div>
+        <div class="pending-reports-btn">
+            Pending Reports
+        </div>
+    </div>
+
+    <div class = "main-content-container">
+        <div class="list-search-container">
+            <div class="search-container">
+                <input placeholder="Find by name">
+                <div class="search-btn">
+                    Search
+                </div>
+                <select name="id" id="id-num">
+                    <option value="0">Select</option>
+                    <option value="123">123</option>
+                    <option value="122">122</option>
+                </select>
+                <select name="position" id="position">
+                    <option value="position">Position</option>
+                    <option value="officer">Officer</option>
+                </select>
+                <select name="status" id="status">
+                    <option value="status">Status</option>
+                    <option value="cleared">Cleared</option>
                 </select>
             </div>
-        </div>
-        <div>
-            <button>Add User</button>
-            <button>Pending Reports</button>
-        </div>
-        <div class="content">      
-            <div class="left">
-                <div class="search">
-                    <input placeholder="Find by name"> 
 
-                    <button>Search</button>
-                    <select name="id-num" id="id-num">
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select name="position" id="position">
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select name="status" id="status">
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                </div>
-                
-                <div class="table">
-                    <table>
+            <div class="list-container">
+                <table>
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -91,40 +89,52 @@
                 </div>
             </div>
 
-            <div class="event-tracker">
-                <div class="event-header">
-                    <div class="event-name">
-                        <span>GDSC Dev Fest</span>
+            <div class="info-container">
+                <div class="profile-card">
+                    <div class="left-profile-card">
+                        <div class="profile-image">
+                            <span class="emoji"><img src="images/Avatar.svg"></span>
+                        </div>
+                        <div class="profile-info">
+                            <span><h3>aaaaa, aaaa</h3></span>
+                            <p>Member</p>
+                        </div>
                     </div>
-                    <button class="edit-button">EDIT</button>
-                </div>   
-                <div id="event-type">
-                    Event Type
+
+                    <div class="edit-btn">
+                            Edit
+                    </div>
                 </div>
-                <div class="event-body">
-                    <div class="event-details">
+
+                <div class="profile-body">
+                    <div class="profile-details">
                         <div class="info-item">
-                            <span class="label">Date</span>
-                            <span class="value">MM/DD/YYYY</span>
+                            <span class="label">Contact Number:</span>
+                            <span class="value">0917-xxx-xxxx</span>
                         </div>
                         <div class="info-item">
-                            <span class="label">Venue</span>
-                            <span class="value">Room, Building</span>
+                            <span class="label">Email:</span>
+                            <span class="value">dlsuemail@dlsu.edu.ph</span>
                         </div>
                         <div class="info-item">
-                            <span class="label">Time</span>
-                            <span class="value">HH:MM AM/PM</span>
+                            <span class="label">ID #:</span>
+                            <span class="value">122xxxxx</span>
                         </div>
                         <div class="info-item">
-                            <span class="label">Attendees Count</span>
-                            <span class="value">####</span>
+                            <span class="label">Disciplinary Status:</span>
+                            <span class="value">Status</span>
                         </div>
                         <div class="info-item">
-                            <span class="label">Project Head</span>
-                            <span class="value pending">John Smith</span>
+                            <span class="label">Violations:</span>
+                            <span class="value pending">Pending</span>
                         </div>
                     </div>
-                </div> 
+                    <a href="#" class="dispute-link">Dispute a Report</a>
+                </div>
+                
             </div>
         </div>
+
+        
     </div>
+</div>

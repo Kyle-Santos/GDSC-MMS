@@ -2,6 +2,7 @@ body
 {
     margin: 0;
     background-color: #2C2C2B;
+    color: #E1E1E1;
     font-family: "Inter", sans-serif;
     display: flex;
     cursor: default;

@@ -31,9 +31,17 @@ function add(server){
         res.render('events', { 
             layout: 'index',
             title: "Events",
-            isEvents: true,
+            isEvents: true
         });
             
+    });
+
+    server.get('/members', (req,res) => {
+        res.render('members', {
+            layout: 'index',
+            title: "Members",
+            isMembers: true
+        });
     });
 }
 
