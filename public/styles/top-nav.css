@@ -64,3 +64,8 @@
 {
     background-color: #484848;
 }
+
+.top-nav-button-group-container a {
+    text-decoration: none;
+    color: inherit;
+}
