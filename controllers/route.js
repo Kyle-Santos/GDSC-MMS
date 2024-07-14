@@ -43,6 +43,15 @@ function add(server){
             isMembers: true
         });
     });
+
+    server.get('/login', (req,res) => {
+        res.render('login', {
+            layout: 'index',
+            title: "Login",
+            isLogin: true
+        });
+    });
+
 }
 
 module.exports.add = add;

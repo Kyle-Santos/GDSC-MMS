@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #2C2C2B;
+  color: #2C2C2B;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #2C2C2B;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+}
+
+*:focus {
+  outline: none;
+}
+
+.logo {
+  margin-bottom: 2rem;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0 1rem;
+}
+
+.card {
+  background-color: #FFFFFF;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0,0,0,0.5);
+  width: 20%;
+  padding: 1rem 2rem;
+  border-radius: 5%;
+}
+
+.card h1 {
+  margin-bottom: 1em;
+}
+
+.card input[type="text"], .card input[type="password"] {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background: transparent;
+  width: 100%;
+  padding: 7px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+.card input[type="password"] {
+  margin-bottom: 1.5em;
+}
+
+.card input[type="submit"] {
+  background-color: #2C2C2B;
+  color: white;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.optionals {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5em;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.right {
+  margin-left: auto;
+}
+
+.temporary {
+  background-color: #2C2C2B;
+  color: white;
+  padding: 10px 0;
+  display: block;
+  text-align: center;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+}
