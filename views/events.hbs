@@ -5,10 +5,11 @@
         <div id="main-header">
             <h2>Attendees</h2>
             <div>
-                <button>+ New Event</button>
-                <select name="event-name" id="event-name">
-                    <option value="GDSC Dev Fest">GDSC Dev Fest</option>
-                    <option value="Event Name 2">Event Name 2</option>
+                <button onclick="location.href='/dbtester'" type="button">+ New Event</button>
+                <select name="event-name" id="event-name" >
+                    {{#each events}}
+                        <option value="{{this.name}}" id="{{this.name}}" data-eventid="{{this.eventID}}">{{this.name}}</option>
+                    {{/each}}
                 </select>
             </div>
         </div>
@@ -102,29 +103,62 @@
                     Event Type
                 </div>
                 <div class="event-body">
-                    <div class="event-details">
-                        <div class="info-item">
-                            <span class="label">Date</span>
-                            <span class="value">MM/DD/YYYY</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="label">Venue</span>
-                            <span class="value">Room, Building</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="label">Time</span>
-                            <span class="value">HH:MM AM/PM</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="label">Attendees Count</span>
-                            <span class="value">####</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="label">Project Head</span>
-                            <span class="value pending">John Smith</span>
-                        </div>
+                <div id="event-details" class="event-details" style="display: none;">
+                    <div class="info-item">
+                        <span class="label">Date</span>
+                        <span id="event-date" class="value"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Venue</span>
+                        <span id="event-venue" class="value"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Time</span>
+                        <span id="event-time" class="value"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Attendees Count</span>
+                        <span id="event-attendee-count" class="value"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Project Head</span>
+                        <span id="event-project-head" class="value pending"></span>
                     </div>
                 </div> 
             </div>
         </div>
+    <script>
+        // show event details upon page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            const eventSelect = document.getElementById('event-name');
+            const selectedEventID = eventSelect.options[eventSelect.selectedIndex].getAttribute('data-eventid');
+            await fetchEventDetails(selectedEventID);
+
+            // show event details upon event selection change
+            eventSelect.addEventListener('change', async (event) => {
+                const selectedEventID = event.target.options[event.target.selectedIndex].getAttribute('data-eventid');
+                await fetchEventDetails(selectedEventID);
+            });
+        });
+
+        async function fetchEventDetails(eventID) {
+            try {
+                const response = await fetch(`/event/${eventID}`);
+                if (response.ok) {
+                    const event = await response.json();
+                    document.getElementById('event-date').textContent = event.date;
+                    document.getElementById('event-venue').textContent = event.venue;
+                    document.getElementById('event-time').textContent = event.time;
+                    document.getElementById('event-attendee-count').textContent = event.attendeeCount;
+                    document.getElementById('event-project-head').textContent = event.projectHeadID;
+
+                    document.getElementById('event-details').style.display = 'block';
+                } else {
+                    console.error('Error fetching event details:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching event details:', error);
+            }
+        }
+    </script>
     </div>

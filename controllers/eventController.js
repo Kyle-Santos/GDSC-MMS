@@ -1,50 +1,69 @@
 const Event = require('../models/Event');
 
 // when creating an event, date and time must be in String format (date = MM/DD/YYY, time = HH:MM AM/PM) and NOT Date Object format !!!
-const eventCreate = async(req, res) => {
-    const {date, venue, time, projectHeadID} = req.body;
+const createEvent = async (req, res) => {
+    const { name, date, venue, time, projectHeadID } = req.body;
 
-    // confirm required fields
-    if( !date || !venue ||!time || !projectHeadID) return res.status(400).json({'message': 'All credentials are required', 'data': req.body });
+    // Confirm required fields
+    if (!name || !date || !venue || !time || !projectHeadID) {
+        return res.status(400).json({ 'message': 'All credentials are required', 'data': req.body });
+    }
 
-    try{
-        const lastID = await Event.findOne({},{},{sort: {'eventID': -1}}).exec();
+    try {
+        // Find the last event and sort by eventID descending
+        const lastEvent = await Event.findOne().sort({ 'eventID': -1 }).exec();
 
-        if (lastID){
-            newEventID = lastID.eventID + 1;
+        let newEventID = 1; // Default to 1 if no events exist
+
+        if (lastEvent) {
+            newEventID = lastEvent.eventID + 1;
         }
 
-        await Event.create({
+        // Create new event
+        const event = await Event.create({
             eventID: newEventID,
+            name: name,
             date: date,
             venue: venue,
             time: time,
             projectHeadID: projectHeadID
         });
 
-        res.status(201).json({ 'success' : `New event created!`});
-
-    }catch(error){
-        res.status(500).json({message: 'error creating event'});
+        res.send(`
+            <script>
+                window.location.href = '/';
+                alert('New event created!');
+            </script>
+        `);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error creating event' });
     }
-
 }
 
-const eventRead = async(req, res) => {
-    const {eventID} = req.body;
 
+const readEvent = async (eventID) => {
+    try {
+        const matchingEvent = await Event.findOne({ eventID: eventID }).exec();
+        return matchingEvent;
+    } catch (error) {
+        console.error(error);
+        throw new Error('Error finding event');
+    }
+}
+
+const readAllEvents = async(req, res) => {
     try{
-        const matchingEvent = await Event.findOne({eventID: eventID}).exec();
+        const matchingEvents = await Event.find({}).lean().exec();
 
-        res.status(201).json(matchingEvent);
+        return matchingEvents;
 
     }catch(error){
-        res.status(500).json({message: 'error finding event'});
+        res.status(500).json({message: 'error finding events'});
     }
-
 }
 
-const eventUpdate = async(req, res) => {
+const updateEvent = async(req, res) => {
     const {eventID, editedEventData} = req.body;
     
     try{
@@ -58,21 +77,21 @@ const eventUpdate = async(req, res) => {
         }, {new: true}
         );
         
-        if (!updatedevent) { // didn't find event
+        if (!updatedEvent) { // didn't find event
           return res.status(404).json({ message: 'event not found' });
         }
-        res.status(200).json({event:updatedevent});
+        res.status(200).json({event:updatedEvent});
     }catch (error) {
         console.error('Error updating event:', error);
         return res.status(500).json({ error: 'Internal server error' });
       }
 }
 
-const eventDelete = async(req, res) => {
+const deleteEvent = async(req, res) => {
     const {eventID} = req.body;
 
     try{
-        const eventDelete = await event.findOneAndDelete({eventID});
+        const eventDelete = await Event.findOneAndDelete({eventID});
 
         if (eventDelete){
             return res.status(200).json({ message : 'event deleted successfuly'});
@@ -86,4 +105,4 @@ const eventDelete = async(req, res) => {
 
 }
 
-module.exports = { eventCreate, eventRead, eventUpdate, eventDelete };
+module.exports = { createEvent, readEvent, readAllEvents, updateEvent, deleteEvent };

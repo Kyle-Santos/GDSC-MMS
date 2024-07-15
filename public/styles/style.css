@@ -75,3 +75,8 @@ body
     cursor:pointer;
     background-color:#eeeeee;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

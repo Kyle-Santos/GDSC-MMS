@@ -22,6 +22,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    // CONFIRM: is contact number optional?
     contactnum:{
         type: Number,
         default: null

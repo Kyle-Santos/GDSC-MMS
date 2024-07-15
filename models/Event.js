@@ -6,6 +6,10 @@ const eventSchema = new Schema({
         type: Number,
         required: true
     },
+    name: {
+        type: String,
+        required: true
+    },
     date: {
         type: String,
         required: true
@@ -22,7 +26,7 @@ const eventSchema = new Schema({
         type: Number,
         default: 0
     },
-    // CONFIRM: can an event not have a project head when it is created? i.e. fundraising event with no assigned head yet
+    // CONFIRM: can an event be created wo a project head initially? i.e. fundraising event with no assigned head yet, but can/will be assigned later
     projectHeadID: {
         type: Number,
         required: true

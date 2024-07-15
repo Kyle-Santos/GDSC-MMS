@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
-const userCreate = async(req, res) => {
+const createUser = async(req, res) => {
     const {firstname, lastname, email, password} = req.body;
 
     // confirm required fields
@@ -36,7 +36,7 @@ const userCreate = async(req, res) => {
 
 }
 
-const userRead = async(req, res) => {
+const readUser = async(req, res) => {
     const {studentID} = req.body;
 
     try{
@@ -50,7 +50,7 @@ const userRead = async(req, res) => {
 
 }
 
-const userUpdate = async(req, res) => {
+const updateUser = async(req, res) => {
     const {studentID, editedUserData} = req.body;
 
     const contactnum = editedUserData.contactnum === "null" ? null : editedUserData.contactnum;
@@ -76,7 +76,7 @@ const userUpdate = async(req, res) => {
       }
 }
 
-const userUpdateLogin = async(req, res) => {
+const updateUserLogin = async(req, res) => {
     const {email, password} = req.body;
     const hashedPass = await bcrypt.hash(password,10);
 
@@ -97,13 +97,13 @@ const userUpdateLogin = async(req, res) => {
       }
 }
 
-const userDelete = async(req, res) => {
+const deleteUser = async(req, res) => {
     const {studentID} = req.body;
 
     try{
-        const userDelete = await User.findOneAndDelete({studentID});
+        const deleteUser = await User.findOneAndDelete({studentID});
 
-        if (userDelete){
+        if (deleteUser){
             return res.status(200).json({ message : 'User deleted successfuly'});
         } else{
             return res.status(404).json({ message : 'User not found'});
@@ -115,4 +115,4 @@ const userDelete = async(req, res) => {
 
 }
 
-module.exports = { userCreate, userRead, userUpdate, userUpdateLogin, userDelete };
+module.exports = { createUser, readUser, updateUser, updateUserLogin, deleteUser };

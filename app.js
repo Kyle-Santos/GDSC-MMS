@@ -3,9 +3,10 @@
 const express = require('express');
 const server = express();
 const mongoose = require('mongoose');
+const route = require('./controllers/route');
 
 // mongodb conn
-mongoose.connect('mongodb+srv://jpcarney:uD46nB7g5kbEdTyI@cluster0.hffyebt.mongodb.net/GDSC_DB');
+mongoose.connect('mongodb+srv://GDSC:t55kysWsTyd7qvNl@cluster0.kbfmtmh.mongodb.net/GDSC_DB');
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -25,6 +26,8 @@ server.engine('hbs', handlebars.engine({
 }));
 
 server.use(express.static('public'));
+
+route.add(server);
 
 const controllers = ['route'];
 
