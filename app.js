@@ -2,11 +2,21 @@
 
 const express = require('express');
 const server = express();
+const mongoose = require('mongoose');
+
+// mongodb conn
+mongoose.connect('mongodb+srv://jpcarney:uD46nB7g5kbEdTyI@cluster0.hffyebt.mongodb.net/GDSC_DB');
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+    console.log('Connected to MongoDB');
+});
 
 const bodyParser = require('body-parser');
 server.use(express.json()); 
 server.use(express.urlencoded({ extended: true }));
-
+server.use(express.static('public'));
 
 const handlebars = require('express-handlebars');
 server.set('view engine', 'hbs');
@@ -35,6 +45,10 @@ process.on('SIGINT',finalClose);   //catches when ctrl + c is used
 process.on('SIGQUIT', finalClose); //catches other termination commands
 
 const port = process.env.PORT || 3000;
-server.listen(port, function(){
-    console.log('Listening at port '+ port);
+server.listen(port, () => {
+  console.log(`Listening at port ${port}`);
+  (async () => {
+    const open = await import('open');
+    await open.default(`http://localhost:${port}`);
+  })();
 });
