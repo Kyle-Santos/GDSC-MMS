@@ -1,0 +1,37 @@
+
+<div class="main-container">
+    <!--TOP NAV-->
+    {{>top-nav}}
+
+    <!--Welcone Title-->
+    <div class="mms-container">
+        <div class = "mms-title">
+            Member Management System
+        </div>
+        <div class="welcome-title">
+            Welcome, Admin USER
+        </div>
+    </div>
+
+    <h1>Create Event</h1>
+        <form action="/submit-event" method="POST">
+
+            <input type="hidden" id="date" name="date" value="2024-07-16"> <!-- Preset date -->
+
+            <label for="eventName">Name:</label>
+            <input type="text" id="name" name="name" required><br> <!-- User input field for eventName -->
+
+            <label for="eventVenue">Venue:</label>
+            <input type="text" id="venue" name="venue" required><br> <!-- User input field for eventVenue -->
+
+            <label for="eventTime">Time:</label>
+            <input type="text" id="time" name="time" required> <!-- Preset time -->
+            
+            <input type="hidden" id="attendeeCount" name="attendeeCount" value="0"> <!-- Preset attendeeCount -->
+            
+            <input type="hidden" id="projectHeadID" name="projectHeadID" value="456"> <!-- Preset projectHeadID -->
+
+            <button type="submit">Submit</button>
+        </form>
+</div>
+
