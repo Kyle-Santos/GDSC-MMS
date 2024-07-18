@@ -23,32 +23,34 @@
                             <p>Officer</p>
                         </div>
                     </div>
-                    <button class="edit-button">EDIT</button>
+                    <button class="edit-btn">EDIT</button>
                 </div>   
                 <div class="profile-body">
                     <div class="profile-details">
                         <div class="info-item">
                             <span class="label">Contact Number:</span>
-                            <span class="value">{{officer.contact}}</span>
+                            <span class="value" id="contact-number">{{officer.contact}}</span>
                         </div>
                         <div class="info-item">
                             <span class="label">Email:</span>
-                            <span class="value">{{officer.email}}</span>
+                            <span class="value" id="email">{{officer.email}}</span>
                         </div>
                         <div class="info-item">
                             <span class="label">ID #:</span>
-                            <span class="value">{{officer.id}}</span>
+                            <span class="value" id="id-number">{{officer.id}}</span>
                         </div>
                         <div class="info-item">
                             <span class="label">Disciplinary Status:</span>
-                            <span class="value">{{officer.status}}</span>
+                            <span class="value" id="status">{{officer.status}}</span>
                         </div>
                         <div class="info-item">
                             <span class="label">Violations:</span>
-                            <span class="value pending">{{officer.violations}} Pending</span>
+                            <span class="value pending" id="violations">{{officer.violations}} Pending</span>
                         </div>
                     </div>
-                    <a href="#" class="dispute-link">Dispute a Report</a>
+                    <div class="footer">
+                        <a href="#" class="makeReport" id="makeReport">Dispute a Report</a>
+                    </div>
                 </div> 
             </div>
 

@@ -143,7 +143,7 @@ h2 {
     font-size: 16px;
     color: #666;
 }
-.edit-button {
+.edit-btn {
     align-self: right;
     background-color: #007bff;
     border: none;
@@ -193,12 +193,28 @@ h2 {
     color: red;
 } */
 
-.dispute-link {
-    text-align: center;
-    color: #2C2C2B;
+.footer {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 15px;
+}
+
+.makeReport, .save-changes, .discard-changes {
+    color: black;
+    cursor: pointer;
+    font-size: 14px;
     text-decoration: none;
-    margin-bottom: 10px;
-    font-size: 12px;
+}
+
+.discard-changes {
+    color: #900;
+}
+
+.profile-details .info-item input {
+    height: 16px;
+    text-align: right;
+    padding: 6px 10px;
 }
 
 .warnings-list {

@@ -154,6 +154,7 @@ td {
 
 .profile-card
 {
+    margin: 20px 0px 10px 0px;
     border-radius: 8px;
     display: flex;
     gap: 10px;
@@ -170,6 +171,10 @@ td {
 .profile-info
 {
     color:black;
+}
+
+.profile-info h3, .profile-info p {
+    margin: 0;
 }
 
 .edit-btn
@@ -220,8 +225,8 @@ td {
     text-align: right;
 }
 
-.info-item .value.pending {
-    color: #900;
+.info-item .value.green {
+    color: #009934;
     font-weight: bold;
 }
 
@@ -246,4 +251,5 @@ td {
 .profile-details .info-item input {
     height: 16px;
     text-align: right;
+    padding: 6px 10px;
 }
