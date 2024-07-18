@@ -8,6 +8,11 @@ body
     cursor: default;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
 /*Style for Title in Main Page*/
 .main-container{
     display: flex;
