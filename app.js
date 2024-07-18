@@ -52,6 +52,6 @@ server.listen(port, () => {
   console.log(`Listening at port ${port}`);
   (async () => {
     const open = await import('open');
-    await open.default(`http://localhost:${port}`);
+    // await open.default(`http://localhost:${port}`);
   })();
 });

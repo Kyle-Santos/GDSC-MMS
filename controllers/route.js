@@ -24,7 +24,7 @@ function add(server){
         res.render('officers', { 
             layout: 'index',
             title: "Officers",
-            'officers': officer[0],
+            'officer': officer[0],
             isForOfficer: true,
         });
             
