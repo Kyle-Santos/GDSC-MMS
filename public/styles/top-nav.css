@@ -36,6 +36,11 @@
     align-items:center;
 }
 
+.orgname-container:hover
+{
+    cursor:pointer;
+}
+
 .members-btn, .events-btn, .logout-btn
 {
     background-color:#E1E1E1;
@@ -68,4 +73,9 @@
 .top-nav-button-group-container a {
     text-decoration: none;
     color: inherit;
+}
+
+a {
+    color: black;
+    text-decoration: none;
 }
