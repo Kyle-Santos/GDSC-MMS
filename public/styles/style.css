@@ -59,11 +59,11 @@ a {
     justify-content: center;
 }
 
-.officers-btn-container, .events-btn-container, .members-btn-container
+.events-btn-container, .members-btn-container
 {
     background-color: #E1E1E1;
     color: black;
-    width: 341px;
+    width: 419px;
     height: 343px;
     border-radius: 2%;
     font-size: 40px;
@@ -74,6 +74,21 @@ a {
     overflow: hidden;
 }
 
+.events-btn-container {
+    background-image: url("../images/watermelon.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.members-btn-container {
+    background-image: url("../images/pear.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
 
 .officers-btn-container:hover, .events-btn-container:hover, .members-btn-container:hover
 {
