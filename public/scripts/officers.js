@@ -8,7 +8,7 @@ $(document).ready(function() {
             var $this = $(this);
             var input = $('<input>', {
                 type: 'text',
-                placeholder: $this.text(),
+                value: $this.text(),
                 id: $this.attr('id')
             });
             $this.replaceWith(input);
@@ -59,7 +59,7 @@ $(document).ready(function() {
             var input = $('<span>', {
                 class: 'value',
                 id: $this.attr('id'),
-                text: $this.attr('placeholder'),
+                text: $this.attr('value'),
             });
             $this.replaceWith(input);
         });

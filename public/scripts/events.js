@@ -4,19 +4,16 @@ $(document).ready(function() {
         $(this).hide();
 
         // Replace spans with input fields
-        $('.profile-details .info-item .value').each(function() {
+        $('.event-details .info-item .value').each(function() {
             var $this = $(this);
             var input = $('<input>', {
                 type: 'text',
-                placeholder: $this.text(),
+                value: $this.text(),
                 id: $this.attr('id')
             });
             $this.replaceWith(input);
         });
 
-        // Replace dispute link with Save Changes and Discard Changes buttons
-        var $disputeLink = $('#blacklist');
-        $disputeLink.hide();
 
         var saveBtn = $('<a>', {
             text: 'Save Changes',
@@ -52,22 +49,20 @@ $(document).ready(function() {
         });
     });
 
-
     function resetEdit() {
         // Replace spans with input fields
-        $('.profile-details .info-item input').each(function() {
+        $('.event-details .info-item input').each(function() {
             var $this = $(this);
             var input = $('<span>', {
                 class: 'value',
                 id: $this.attr('id'),
-                text: $this.attr('placeholder'),
+                text: $this.val(),
             });
             $this.replaceWith(input);
         });
 
         $('.save-changes').remove();
         $('.discard-changes').remove();
-        $('#blacklist').show();
         $('.edit-btn').show();
     }
 });

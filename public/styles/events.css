@@ -91,7 +91,7 @@ h2 {
     margin-bottom: 5px;
 }
 
-.edit-button {
+.edit-btn {
     background-color: #007bff;
     border: none;
     color: white;
@@ -198,4 +198,32 @@ button, select, input {
 select, input {
     color: #828282;
 }
+
+
+
+
+.footer {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 15px;
+}
+
+.save-changes, .discard-changes {
+    color: black;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.discard-changes {
+    color: #900;
+}
+
+.event-details .info-item input {
+    height: 16px;
+    text-align: right;
+    padding: 6px 10px;
+}
+
 
