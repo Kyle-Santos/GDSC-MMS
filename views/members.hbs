@@ -1,12 +1,55 @@
 
 {{>top-nav}}
+
+<div id="add-user">
+        <div class="add-content">
+            <div class="add-user-header">
+                <span id="add-img"><img src="images/add.png"></span>
+                Adding User
+            </div>   
+            <div class="add-user-body">
+                <div id="add-user-details">
+                    <div class="info-item">
+                        <span class="label">Position</span>
+                        <select name="position" id="position">
+                        <option value="Member">Member</option>
+                        <option value="Officer">Officer</option>
+                    </select>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">First Name</span>
+                        <input id="fName" placeholder="First Name">
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Last Name</span>
+                        <input id="lName" placeholder="Last Name">
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Contact Number</span>
+                        <input id="contact" placeholder="0999234****">
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Email Address</span>
+                        <input id="email" placeholder="email@dlsu.edu.ph">
+                    </div>
+                    <div class="info-item">
+                        <span class="label">ID #</span>
+                        <input id="id-number" placeholder="121*****">
+                    </div>
+                </div> 
+                <div class="footer">
+                    <a class="add-user" href="#">Add User</a>
+                    <a class="cancel">Cancel</a>
+                </div>
+            </div>
+        </div>
+</div>
+
 <div class = "container">
     <h2>Members</h2>
     <!--Add User and Pending Reports Buttons-->
     <div class="add-user-container">
-        <button class="add-user-btn">
-                Add User
-        </button>
+        <button id="add-user-btn">Add User</button>
         <button class="pending-reports-btn">
             Pending Reports
         </button>

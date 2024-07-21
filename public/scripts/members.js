@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $('#add-user').hide();
+
     $('.edit-btn').on('click', function() {
         // Hide the edit button
         $(this).hide();
@@ -15,7 +17,7 @@ $(document).ready(function() {
         });
 
         // Replace dispute link with Save Changes and Discard Changes buttons
-        var $disputeLink = $('#blacklist');
+        var $disputeLink = $('.blacklist');
         $disputeLink.hide();
 
         var saveBtn = $('<a>', {
@@ -52,6 +54,15 @@ $(document).ready(function() {
         });
     });
 
+    $('#add-user-btn').on('click', function() {
+        $('#add-user').show();
+    });
+
+    $('.cancel').on('click', function() {
+        $('#add-user').hide();
+    });
+    
+
 
     function resetEdit() {
         // Replace spans with input fields
@@ -67,7 +78,7 @@ $(document).ready(function() {
 
         $('.save-changes').remove();
         $('.discard-changes').remove();
-        $('#blacklist').show();
+        $('.blacklist').show();
         $('.edit-btn').show();
     }
 });

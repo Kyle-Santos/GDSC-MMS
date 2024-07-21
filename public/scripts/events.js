@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $('#add-user').hide();
+
     $('.edit-btn').on('click', function() {
         // Hide the edit button
         $(this).hide();
@@ -27,7 +29,7 @@ $(document).ready(function() {
             href: '#'
         });
 
-        $('.footer').append(saveBtn).append(discardBtn);
+        $('.event-tracker .footer').append(saveBtn).append(discardBtn);
 
         // Add event listeners for Save Changes and Discard Changes buttons
         $('.save-changes').on('click', function(event) {
@@ -48,6 +50,16 @@ $(document).ready(function() {
             resetEdit();
         });
     });
+
+    $('#add-user-btn').on('click', function() {
+        $('#add-user').show();
+    });
+
+    $('.cancel').on('click', function() {
+        $('#add-user').hide();
+    });
+    
+
 
     function resetEdit() {
         // Replace spans with input fields
