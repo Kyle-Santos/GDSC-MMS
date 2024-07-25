@@ -233,16 +233,24 @@ td {
 
 .footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 40px;
     margin-bottom: 15px;
 }
 
-.blacklist, .save-changes, .discard-changes {
+.delete-user, .blacklist, .save-changes, .discard-changes {
     margin-top: 10px;
     color: black;
     cursor: pointer;
     font-size: 14px;
+}
+
+.delete-user{
+    color: red;
+}
+
+.delete-user:hover{
+    color: #900;
 }
 
 .discard-changes {
