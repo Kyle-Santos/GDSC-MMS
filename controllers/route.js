@@ -20,10 +20,10 @@ function add(server){
     server.post('/submit-event', eventController.createEvent);
     
     // get officer page (for officer accounts)
-    server.get('/officers', (req, res) => {
-        res.render('officers', { 
+    server.get('/officer', (req, res) => {
+        res.render('officer', { 
             layout: 'index',
-            title: "Officers",
+            title: "Officer",
             'officer': officer[0],
             isForOfficer: true,
         });

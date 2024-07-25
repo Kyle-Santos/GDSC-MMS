@@ -74,6 +74,11 @@ a {
     overflow: hidden;
 }
 
+.events-btn-container:hover, .members-btn-container:hover {
+    color: rgba(0, 0, 0, 0.7); 
+    background-color: rgba(0, 0, 0, 0.7); 
+}
+
 .events-btn-container {
     background-image: url("../images/watermelon.png");
     background-size: 100%;

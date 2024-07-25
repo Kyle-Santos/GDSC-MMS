@@ -215,6 +215,7 @@ td {
     grid-template-columns: 1fr auto;
     padding: 18px 0 5px 0;
     border-bottom: 1px solid #ccc;
+    align-items: center;
 }
 
 .info-item .label {
@@ -328,6 +329,27 @@ td {
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
+}
+
+.hidden {
+    display: none;
+}
+
+#gen-pass {
+    font-weight: normal;
+    width: 40%;
+    border: none;
+    background-color: #007bff; 
+    color: white;
+    padding: 2px 0px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#gen-pass:hover {
+    background-color: #4ea4ff;
 }
 
 .add-user:hover,

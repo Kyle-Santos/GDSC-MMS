@@ -1,5 +1,17 @@
 $(document).ready(function() {
+    // Store the elements to be removed
+    var hiddenElement = $('.password').detach();
+
+    $('#position').change(function() {
+        if ($(this).val() === 'Member') {
+            hiddenElement = $('.password').detach();
+        } else {
+            $(hiddenElement).appendTo('#add-user-details');
+        }
+    });
+
     $('#add-user').hide();
+
 
     $('.edit-btn').on('click', function() {
         // Hide the edit button

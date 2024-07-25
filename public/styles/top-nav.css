@@ -15,10 +15,17 @@
     font-size: 16px;
 }
 
+.orgname-container img {
+    height: 40px;
+}
+
 .orgname-container
 {
+    display: flex;
+    align-items: center;
     font-size: 20px;
-    width: 50%;
+    width: 60%;
+    gap: 10px;
 }
 
 .top-nav-button-group-container
