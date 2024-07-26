@@ -8,43 +8,45 @@
                 Adding User
             </div>   
             <div class="add-user-body">
-                <div id="add-user-details">
-                    <div class="info-item">
-                        <span class="label">Position</span>
-                        <select name="position" id="position">
-                            <option value="Member">Member</option>
-                            <option value="Officer">Officer</option>
-                        </select>
+                <form id="add-user-form">
+                    <div id="add-user-details">
+                        <div class="info-item">
+                            <span class="label">Position</span>
+                            <select name="position" id="position">
+                                <option value="Member">Member</option>
+                                <option value="Officer">Officer</option>
+                            </select>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">First Name</span>
+                            <input id="fName" placeholder="First Name">
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Last Name</span>
+                            <input id="lName" placeholder="Last Name">
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Contact Number</span>
+                            <input id="contact" placeholder="0999234****">
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Email Address</span>
+                            <input id="email" placeholder="email@dlsu.edu.ph">
+                        </div>
+                        <div class="info-item">
+                            <span class="label">ID #</span>
+                            <input id="id-number" placeholder="121*****">
+                        </div>
+                        <div class="info-item password">
+                            <button id="gen-pass" class="label">Generate Password</button>
+                            <input readonly id="password" value="">
+                        </div>
+                    </div> 
+                    <div class="footer">
+                        <a class="add-user" href="#" id="submit-form">Add User</a>
+                        <a class="cancel">Cancel</a>
                     </div>
-                    <div class="info-item">
-                        <span class="label">First Name</span>
-                        <input id="fName" placeholder="First Name">
-                    </div>
-                    <div class="info-item">
-                        <span class="label">Last Name</span>
-                        <input id="lName" placeholder="Last Name">
-                    </div>
-                    <div class="info-item">
-                        <span class="label">Contact Number</span>
-                        <input id="contact" placeholder="0999234****">
-                    </div>
-                    <div class="info-item">
-                        <span class="label">Email Address</span>
-                        <input id="email" placeholder="email@dlsu.edu.ph">
-                    </div>
-                    <div class="info-item">
-                        <span class="label">ID #</span>
-                        <input id="id-number" placeholder="121*****">
-                    </div>
-                    <div class="info-item password">
-                        <button id="gen-pass" class="label">Generate Password</button>
-                        <input readonly id="password" value="">
-                    </div>
-                </div> 
-                <div class="footer">
-                    <a class="add-user" href="#">Add User</a>
-                    <a class="cancel">Cancel</a>
-                </div>
+                </form>
             </div>
         </div>
 </div>
@@ -91,46 +93,13 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{#each member-list}}
                             <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
+                                <td>{{lastname}}, {{firstname}}</td>
+                                <td>{{email}}</td>
+                                <td>{{position}}</td>
                             </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
+                            {{/each}}
                         </tbody>
                     </table>
                 </div>

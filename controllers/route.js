@@ -3,6 +3,14 @@ const fs = require('fs');
 const { off } = require('process');
 const eventController = require('../controllers/eventController');
 
+function errorFn(err) {
+    console.log("Error found");
+    console.error(err);
+  }
+
+//adding schemas
+const memberModel = require("../schemas/memberSchema");
+
 // Read and parse the JSON file
 const rawData = fs.readFileSync(path.join(__dirname, '../data/officer.json'));
 const officer = JSON.parse(rawData);
@@ -58,10 +66,33 @@ function add(server){
     });
 
     server.get('/members', (req,res) => {
-        res.render('members', {
-            layout: 'index',
-            title: "Members",
-            isMembers: true
+        memberModel.find().lean().then(function(members){
+            res.render('members', {
+                layout: 'index',
+                title: "Members",
+                isMembers: true,
+                'member-list': members
+            });
+        }).catch(errorFn);
+    });
+
+    //ADDING USERS
+    server.post('/add-member', function(req, res){
+        const newMember = new memberModel({
+            position,
+            firstname,
+            lastname,
+            contactnum,
+            email,
+            studentid,
+            password,
+            profilepicture: "",
+            violations: []
+        });
+
+        newMember.save().then(function(){
+            console.log('Added Member Successfully!');
+            res.redirect('/');
         });
     });
 
