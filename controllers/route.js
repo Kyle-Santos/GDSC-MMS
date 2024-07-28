@@ -67,17 +67,36 @@ function add(server){
 
     server.get('/members', (req,res) => {
         memberModel.find().lean().then(function(members){
+            let selectedMember = members[0];
             res.render('members', {
                 layout: 'index',
                 title: "Members",
                 isMembers: true,
-                'member-list': members
+                'member-list': members,
+                'selected-member': selectedMember
             });
         }).catch(errorFn);
     });
 
+    server.get('/member/:studentid', async (req,res) => {
+        try {
+            await memberModel.findOne({ studentid: req.params.studentid }).lean().then(function(member){
+                if (member) {
+                    res.json(member);
+                } else {
+                    res.status(404).json({ message: 'Member not found' });
+                }
+            }).catch(errorFn);
+            
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Error fetching member details' });
+        }
+    });
+
     //ADDING USERS
     server.post('/add-member', async function(req, res){
+        console.log(req.body);
         const {position, firstname, lastname, contact, email, studentid, password} = req.body;
         const newMember = new memberModel({
             position,
@@ -91,9 +110,22 @@ function add(server){
             violations: []
         });
         await newMember.save().then(function(){
-            console.log('Added Member Successfully!');
+            console.log('Added Member Successfully!', newMember);
             res.redirect('/members');
         });
+    });
+
+    //DELETING USERS
+    server.post('/delete-member', async function(req,res){
+        const{ studentid } = req.body;
+        try {
+            await memberModel.findOneAndDelete({ studentid });
+            console.log('Deleted Member');
+            res.redirect('/members');
+        } catch (error) {
+            errorFn(error);
+            res.status(500).json({ message: 'Error deleting member' });
+        }
     });
 
     server.get('/login', (req,res) => {

@@ -92,9 +92,9 @@
                                 <th>Position</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="member-table-body">
                             {{#each member-list}}
-                            <tr>
+                            <tr data-studentid="{{studentid}}" class="member-row">
                                 <td>{{lastname}}, {{firstname}}</td>
                                 <td>{{email}}</td>
                                 <td>{{position}}</td>
@@ -112,8 +112,8 @@
                             <span class="emoji"><img src="images/Avatar.svg"></span>
                         </div>
                         <div class="profile-info">
-                            <span><h3>aaaaa, aaaa</h3></span>
-                            <p>Member</p>
+                            <span><h3>{{selected-member.lastname}}, {{selected-member.firstname}}</h3></span>
+                            <p>{{selected-member.position}}</p>
                         </div>
                     </div>
 
@@ -126,15 +126,15 @@
                     <div class="profile-details">
                         <div class="info-item">
                             <span class="label">Contact Number:</span>
-                            <span class="value" id="contact-number">0917-xxx-xxxx</span>
+                            <span class="value" id="contact-number">{{selected-member.contact}}</span>
                         </div>
                         <div class="info-item">
                             <span class="label">Email:</span>
-                            <span class="value" id="email">dlsuemail@dlsu.edu.ph</span>
+                            <span class="value" id="email">{{selected-member.email}}</span>
                         </div>
                         <div class="info-item">
                             <span class="label">ID #:</span>
-                            <span class="value" id="id-number">122xxxxx</span>
+                            <span class="value" id="id-number">{{selected-member.studentid}}</span>
                         </div>
                         <div class="info-item">
                             <span class="label">Events Attended:</span>
@@ -145,10 +145,13 @@
                             <span class="value green" id="last-event">Google Dev Fest</span>
                         </div>
                     </div>
-                    <div class="footer">
-                        <a class="delete-user" id="delete-user">Delete User</a>
-                        <a href="#" class="blacklist" id="make-report">Make Report</a>
-                    </div>
+                    <form id="/delete-member-form" action="/delete-member" method="POST">
+                        <input type="hidden" name="studentid" id="delete-studentid">
+                        <div class="footer">
+                            <button type="submit" class="delete-user" id="delete-member">Delete User</button>
+                            <a href="#" class="blacklist" id="make-report">Make Report</a>
+                        </div>
+                    </form>
                 </div>
                 
             </div>
@@ -157,3 +160,61 @@
         
     </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const tableBody = document.getElementById("member-table-body");
+
+    tableBody.addEventListener("click", function(event) {
+        const targetRow = event.target.closest(".member-row");
+        if (targetRow) {
+            const studentid = targetRow.getAttribute("data-studentid");
+            fetchMemberDetails(studentid);
+        }
+    });
+
+    function fetchMemberDetails(studentid) {
+        fetch(`/member/${studentid}`)
+            .then(response => response.json())
+            .then(member => {
+                updateInfoContainer(member);
+            })
+            .catch(error => console.error("Error fetching member details:", error));
+    }
+
+    function updateInfoContainer(member) {
+        document.querySelector("#contact-number").textContent = member.contact;
+        document.querySelector("#email").textContent = member.email;
+        document.querySelector("#id-number").textContent = member.studentid;
+        document.querySelector(".profile-info h3").textContent = `${member.lastname}, ${member.firstname}`;
+        document.querySelector(".profile-info p").textContent = member.position;
+        document.querySelector("#delete-studentid").value = member.studentid;
+    }
+
+    const deleteMemberForm = document.getElementById("delete-member-form");
+    deleteMemberForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const studentid = document.getElementById("delete-studentid").value;
+
+        fetch('/delete-member', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ studentid })
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Deleted Member');
+                window.location.reload(); // Reload the page to update the member list
+            } else {
+                return response.json().then(errorData => {
+                    throw new Error(errorData.message);
+                });
+            }
+        })
+        .catch(error => console.error('Error deleting member:', error));
+    });
+    
+});
+</script>

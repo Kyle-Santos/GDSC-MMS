@@ -247,6 +247,8 @@ td {
 
 .delete-user{
     color: red;
+    background-color: white;
+    border: unset;
 }
 
 .delete-user:hover{
@@ -387,4 +389,9 @@ td {
 
 #add-user .footer {
     gap: 80px;
+}
+
+#td:hover
+{
+   cursor:pointer; 
 }
