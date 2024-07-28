@@ -77,22 +77,22 @@ function add(server){
     });
 
     //ADDING USERS
-    server.post('/add-member', function(req, res){
+    server.post('/add-member', async function(req, res){
+        const {position, firstname, lastname, contact, email, studentid, password} = req.body;
         const newMember = new memberModel({
             position,
-            firstname,
+            firstname, 
             lastname,
-            contactnum,
+            contact,
             email,
             studentid,
             password,
             profilepicture: "",
             violations: []
         });
-
-        newMember.save().then(function(){
+        await newMember.save().then(function(){
             console.log('Added Member Successfully!');
-            res.redirect('/');
+            res.redirect('/members');
         });
     });
 

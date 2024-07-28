@@ -8,7 +8,7 @@
                 Adding User
             </div>   
             <div class="add-user-body">
-                <form id="add-user-form">
+                <form id="add-user-form" action="/add-member" method="POST">
                     <div id="add-user-details">
                         <div class="info-item">
                             <span class="label">Position</span>
@@ -19,31 +19,31 @@
                         </div>
                         <div class="info-item">
                             <span class="label">First Name</span>
-                            <input id="fName" placeholder="First Name">
+                            <input name ="firstname" id="firstname" placeholder="First Name">
                         </div>
                         <div class="info-item">
                             <span class="label">Last Name</span>
-                            <input id="lName" placeholder="Last Name">
+                            <input name="lastname" id="lastname" placeholder="Last Name">
                         </div>
                         <div class="info-item">
                             <span class="label">Contact Number</span>
-                            <input id="contact" placeholder="0999234****">
+                            <input name="contact" id="contact" placeholder="0999234****">
                         </div>
                         <div class="info-item">
                             <span class="label">Email Address</span>
-                            <input id="email" placeholder="email@dlsu.edu.ph">
+                            <input name="email" id="email" placeholder="email@dlsu.edu.ph">
                         </div>
                         <div class="info-item">
                             <span class="label">ID #</span>
-                            <input id="id-number" placeholder="121*****">
+                            <input name="studentid" id="studentid" placeholder="121*****">
                         </div>
                         <div class="info-item password">
                             <button id="gen-pass" class="label">Generate Password</button>
-                            <input readonly id="password" value="">
+                            <input readonly name="password" id="password" value="">
                         </div>
                     </div> 
                     <div class="footer">
-                        <a class="add-user" href="#" id="submit-form">Add User</a>
+                        <button type="submit" class="add-user" id="submit-form">Add User</button>
                         <a class="cancel">Cancel</a>
                     </div>
                 </form>

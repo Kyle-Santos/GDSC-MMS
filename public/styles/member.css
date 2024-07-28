@@ -341,6 +341,13 @@ td {
     font-weight: 500;
 }
 
+.add-user {
+    background-color: white;
+    border: unset;
+    font-size: 16px;
+    font-weight: 500;
+}
+
 .hidden {
     display: none;
 }
