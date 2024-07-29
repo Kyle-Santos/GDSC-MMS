@@ -69,13 +69,16 @@
                     Search
                 </div>
                 <select name="id" id="id-num">
-                    <option value="0">Select</option>
-                    <option value="123">123</option>
-                    <option value="122">122</option>
+                    <option value="0">ID#</option>
+                    {{#each idnumbers}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
                 </select>
                 <select name="position" id="position">
                     <option value="position">Position</option>
-                    <option value="officer">Officer</option>
+                    {{#each positions}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
                 </select>
                 <select name="status" id="status">
                     <option value="status">Status</option>
@@ -216,5 +219,48 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => console.error('Error deleting member:', error));
     });
     
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const searchBtn = document.getElementById("search-btn");
+    const searchName = document.getElementById("search-name");
+    const searchId = document.getElementById("search-id");
+    const searchPosition = document.getElementById("search-position");
+    const searchStatus = document.getElementById("search-status");
+    const tableBody = document.getElementById("member-table-body");
+
+    searchBtn.addEventListener("click", function() {
+        fetchFilteredMembers();
+    });
+
+    function fetchFilteredMembers() {
+        const name = searchName.value;
+        const id = searchId.value;
+        const position = searchPosition.value;
+        const status = searchStatus.value;
+
+        fetch(`/search-members?name=${name}&id=${id}&position=${position}&status=${status}`)
+            .then(response => response.json())
+            .then(members => {
+                updateTable(members);
+            })
+            .catch(error => console.error("Error fetching filtered members:", error));
+    }
+
+    function updateTable(members) {
+        tableBody.innerHTML = "";
+        members.forEach(member => {
+            const row = document.createElement("tr");
+            row.classList.add("member-row");
+            row.setAttribute("data-studentid", member.studentid);
+            row.innerHTML = `
+                <td>${member.lastname}, ${member.firstname}</td>
+                <td>${member.email}</td>
+                <td>${member.position}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
 });
 </script>

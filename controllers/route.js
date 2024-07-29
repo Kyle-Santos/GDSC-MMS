@@ -10,6 +10,7 @@ function errorFn(err) {
 
 //adding schemas
 const memberModel = require("../schemas/memberSchema");
+const eventModel = require("../schemas/eventSchema");
 
 // Read and parse the JSON file
 const rawData = fs.readFileSync(path.join(__dirname, '../data/officer.json'));
@@ -40,19 +41,15 @@ function add(server){
 
     // get events page (admin)
     server.get('/events', async (req, res) => {
-        try {
-            const events = await eventController.readAllEvents();
-    
-            res.render('events', { 
+        eventModel.find().lean().then(function(events){
+
+            res.render('events',{
                 layout: 'index',
                 title: "Events",
                 isEvents: true,
                 events: events
-            });
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'Error fetching events' });
-        }
+            })
+        }).catch(errorFn);
     });
 
     server.get('/event/:id', async (req, res) => {
@@ -67,13 +64,19 @@ function add(server){
 
     server.get('/members', (req,res) => {
         memberModel.find().lean().then(function(members){
+
+            let positions = members.map(member => member.position);
+            let uniquePositions = [...new Set(positions)];
+
+            
             let selectedMember = members[0];
             res.render('members', {
                 layout: 'index',
                 title: "Members",
                 isMembers: true,
                 'member-list': members,
-                'selected-member': selectedMember
+                'selected-member': selectedMember,
+                'positions': uniquePositions,
             });
         }).catch(errorFn);
     });
@@ -135,6 +138,37 @@ function add(server){
             isLogin: true
         });
     });
+
+    //SEARCHING USERS
+    server.get('/search-members', async (req, res) => {
+        const { name, id, position, status } = req.query;
+        let filter = {};
+    
+        if (name) {
+            filter.$or = [
+                { firstname: new RegExp(name, 'i') },
+                { lastname: new RegExp(name, 'i') }
+            ];
+        }
+        if (id && id !== '0') {
+            filter.studentid = id;
+        }
+        if (position && position !== 'position') {
+            filter.position = position;
+        }
+        if (status && status !== 'status') {
+            // Add status filter logic here if applicable
+        }
+    
+        try {
+            const members = await memberModel.find(filter).lean();
+            res.json(members);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Error fetching members' });
+        }
+    });
+
     // FOR TESTING ONLY
     server.get('/dbtester', (req, res) => {
         res.render('dbtester', {
