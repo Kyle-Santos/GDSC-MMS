@@ -1,4 +1,4 @@
-const Event = require('../schemas/eventSchema');
+const Event = require('../models/Event');
 
 // when creating an event, date and time must be in String format (date = MM/DD/YYY, time = HH:MM AM/PM) and NOT Date Object format !!!
 const createEvent = async (req, res) => {

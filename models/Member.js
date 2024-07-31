@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const memberSchema = new Schema({
-    studentid: {
+    studentId: {
         type: Number,
         required: true
     },
@@ -42,7 +42,6 @@ const memberSchema = new Schema({
     }
 
 },{ versionKey: false });
-userSchema.index({ userID: 1 });
+memberSchema.index({ userID: 1 });
 
-const Member = mongoose.model('Member',memberSchema);
-module.exports = Member; 
+module.exports = mongoose.model('Member',memberSchema);; 

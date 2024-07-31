@@ -97,7 +97,7 @@
                         </thead>
                         <tbody id="member-table-body">
                             {{#each member-list}}
-                            <tr data-studentid="{{studentid}}" class="member-row">
+                            <tr data-studentid="{{studentId}}" class="member-row">
                                 <td>{{lastname}}, {{firstname}}</td>
                                 <td>{{email}}</td>
                                 <td>{{position}}</td>
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function updateInfoContainer(member) {
         document.querySelector("#contact-number").textContent = member.contact;
         document.querySelector("#email").textContent = member.email;
-        document.querySelector("#id-number").textContent = member.studentid;
+        document.querySelector("#id-number").textContent = member.studentId;
         document.querySelector(".profile-info h3").textContent = `${member.lastname}, ${member.firstname}`;
         document.querySelector(".profile-info p").textContent = member.position;
         document.querySelector("#delete-studentid").value = member.studentid;
@@ -221,6 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
 });
 </script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const searchBtn = document.getElementById("search-btn");

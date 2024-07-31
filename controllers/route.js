@@ -83,7 +83,7 @@ function add(server){
 
     server.get('/member/:studentid', async (req,res) => {
         try {
-            await Member.findOne({ studentid: req.params.studentid }).lean().then(function(member){
+            await Member.findOne({ studentId: req.params.studentid }).lean().then(function(member){
                 if (member) {
                     res.json(member);
                 } else {
@@ -100,14 +100,14 @@ function add(server){
     //ADDING USERS
     server.post('/add-member', async function(req, res){
         console.log(req.body);
-        const {position, firstname, lastname, contact, email, studentid, password} = req.body;
+        const {position, firstname, lastname, contact, email, studentId, password} = req.body;
         const newMember = new Member({
             position,
             firstname, 
             lastname,
             contact,
             email,
-            studentid,
+            studentId,
             password,
             profilepicture: "",
             violations: []
@@ -122,7 +122,7 @@ function add(server){
     server.post('/delete-member', async function(req,res){
         const{ studentid } = req.body;
         try {
-            await Member.findOneAndDelete({ studentid });
+            await Member.findOneAndDelete({ studentId });
             console.log('Deleted Member');
             res.redirect('/members');
         } catch (error) {
