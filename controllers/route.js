@@ -68,7 +68,10 @@ function add(server){
             let positions = members.map(member => member.position);
             let uniquePositions = [...new Set(positions)];
 
-            
+            let idNos = members.map(member => {
+                return member.studentId.toString().substring(0, 3);
+            });
+            let uniqueId = [...new Set(idNos)];
             let selectedMember = members[0];
             res.render('members', {
                 layout: 'index',
@@ -77,6 +80,7 @@ function add(server){
                 'member-list': members,
                 'selected-member': selectedMember,
                 'positions': uniquePositions,
+                'idnumbers': uniqueId
             });
         }).catch(errorFn);
     });
