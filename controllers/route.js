@@ -9,8 +9,8 @@ function errorFn(err) {
   }
 
 //adding schemas
-const memberModel = require("../schemas/memberSchema");
-const eventModel = require("../schemas/eventSchema");
+const Member = require("../models/Member");
+const Model = require("../models/Event");
 
 // Read and parse the JSON file
 const rawData = fs.readFileSync(path.join(__dirname, '../data/officer.json'));
@@ -41,7 +41,7 @@ function add(server){
 
     // get events page (admin)
     server.get('/events', async (req, res) => {
-        eventModel.find().lean().then(function(events){
+        Model.find().lean().then(function(events){
 
             res.render('events',{
                 layout: 'index',
@@ -63,7 +63,7 @@ function add(server){
     });
 
     server.get('/members', (req,res) => {
-        memberModel.find().lean().then(function(members){
+        Member.find().lean().then(function(members){
 
             let positions = members.map(member => member.position);
             let uniquePositions = [...new Set(positions)];
@@ -83,7 +83,7 @@ function add(server){
 
     server.get('/member/:studentid', async (req,res) => {
         try {
-            await memberModel.findOne({ studentid: req.params.studentid }).lean().then(function(member){
+            await Member.findOne({ studentid: req.params.studentid }).lean().then(function(member){
                 if (member) {
                     res.json(member);
                 } else {
@@ -101,7 +101,7 @@ function add(server){
     server.post('/add-member', async function(req, res){
         console.log(req.body);
         const {position, firstname, lastname, contact, email, studentid, password} = req.body;
-        const newMember = new memberModel({
+        const newMember = new Member({
             position,
             firstname, 
             lastname,
@@ -122,7 +122,7 @@ function add(server){
     server.post('/delete-member', async function(req,res){
         const{ studentid } = req.body;
         try {
-            await memberModel.findOneAndDelete({ studentid });
+            await Member.findOneAndDelete({ studentid });
             console.log('Deleted Member');
             res.redirect('/members');
         } catch (error) {

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-    studentID: {
+const memberSchema = new Schema({
+    studentid: {
         type: Number,
         required: true
     },
@@ -24,7 +24,7 @@ const userSchema = new Schema({
     },
     // CONFIRM: is contact number optional?
     contactnum:{
-        type: Number,
+        type: String,
         default: null
     },
     position:{
@@ -36,9 +36,13 @@ const userSchema = new Schema({
     profile_picture_url:{
         type: String,
         default: null
+    },
+    violations:{ // array of violation numbers
+        type: [Number]
     }
 
-})
+},{ versionKey: false });
 userSchema.index({ userID: 1 });
 
-module.exports = mongoose.model('User', userSchema);
+const Member = mongoose.model('Member',memberSchema);
+module.exports = Member; 
