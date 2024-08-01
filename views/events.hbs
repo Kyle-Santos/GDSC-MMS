@@ -91,46 +91,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
-                            <tr>
-                                <td>Boyer, Tristan</td>
-                                <td>boyer_tristan@dlsu.edu.ph</td>
-                                <td>officer</td>
-                            </tr>
+                            {{#each attendanceList}}
+                                <td>{{lastname}}, {{firstname}}</td>
+                                <td>{{email}}</td>
+                                <td>{{Poisition}}</td>
+                            {{/each}}
                         </tbody>
                     </table>
                 </div>
@@ -193,7 +158,7 @@
                 const response = await fetch(`/event/${eventID}`);
                 if (response.ok) {
                     const event = await response.json();
-                    document.getElementById('event-name').textContent = event.name;
+                    document.querySelector('.event-name').textContent = event.name;
                     document.getElementById('event-date').textContent = event.date;
                     document.getElementById('event-venue').textContent = event.venue;
                     document.getElementById('event-time').textContent = event.time;

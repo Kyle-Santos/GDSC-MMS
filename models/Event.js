@@ -26,11 +26,13 @@ const eventSchema = new Schema({
         type: Number,
         default: 0
     },
-    // CONFIRM: can an event be created wo a project head initially? i.e. fundraising event with no assigned head yet, but can/will be assigned later
     projectHeadID: {
         type: Number,
         required: true
     },
+    attendance_list: {
+        type: [Number]
+    }
 
 })
 eventSchema.index({ userID: 1 });
