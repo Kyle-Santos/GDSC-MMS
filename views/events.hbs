@@ -138,7 +138,7 @@
 
             <div class="event-tracker">
                 <div class="event-header">
-                    <div class="event-name">
+                    <div class="event-name" id="event-name">
                         <span>GDSC Dev Fest</span>
                     </div>
                     <button class="edit-btn">EDIT</button>
@@ -193,6 +193,7 @@
                 const response = await fetch(`/event/${eventID}`);
                 if (response.ok) {
                     const event = await response.json();
+                    document.getElementById('event-name').textContent = event.name;
                     document.getElementById('event-date').textContent = event.date;
                     document.getElementById('event-venue').textContent = event.venue;
                     document.getElementById('event-time').textContent = event.time;
