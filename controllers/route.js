@@ -62,6 +62,16 @@ function add(server){
         }
     });
 
+    server.get('/event/:id/attendance', async (req, res) => {
+        try {
+            const attendance = await eventController.getEventAttendance(req.params.id);
+            res.json(attendance);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Error fetching event attendance' });
+        }
+    });
+
     server.get('/members', (req,res) => {
         Member.find().lean().then(function(members){
 

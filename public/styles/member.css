@@ -125,6 +125,7 @@ th, td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    cursor: pointer;
 }
 
 th {
@@ -389,9 +390,4 @@ td {
 
 #add-user .footer {
     gap: 80px;
-}
-
-#td:hover
-{
-   cursor:pointer; 
 }

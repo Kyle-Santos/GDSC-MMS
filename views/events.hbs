@@ -90,7 +90,7 @@
                                 <th>Position</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="attendance-list">
                             {{#each attendanceList}}
                                 <td>{{lastname}}, {{firstname}}</td>
                                 <td>{{email}}</td>
@@ -145,11 +145,13 @@
             const eventSelect = document.getElementById('event-name');
             const selectedEventID = eventSelect.options[eventSelect.selectedIndex].getAttribute('data-eventid');
             await fetchEventDetails(selectedEventID);
+            await fetchAttendanceList(selectedEventID);
 
             // show event details upon event selection change
             eventSelect.addEventListener('change', async (event) => {
                 const selectedEventID = event.target.options[event.target.selectedIndex].getAttribute('data-eventid');
                 await fetchEventDetails(selectedEventID);
+                await fetchAttendanceList(selectedEventID);
             });
         });
 
@@ -171,6 +173,31 @@
                 }
             } catch (error) {
                 console.error('Error fetching event details:', error);
+            }
+        }
+
+        async function fetchAttendanceList(eventID) {
+            try {
+                const response = await fetch(`/event/${eventID}/attendance`);
+                if (response.ok) {
+                    const attendanceList = await response.json();
+                    const attendanceListElement = document.getElementById('attendance-list');
+                    attendanceListElement.innerHTML = '';
+
+                    attendanceList.forEach(member => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${member.lastname}, ${member.firstname}</td>
+                            <td>${member.email}</td>
+                            <td>${member.position}</td>
+                        `;
+                        attendanceListElement.appendChild(row);
+                    });
+                } else {
+                    console.error('Error fetching attendance list:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching attendance list:', error);
             }
         }
     </script>

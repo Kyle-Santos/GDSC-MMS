@@ -1,4 +1,5 @@
 const Event = require('../models/Event');
+const Member = require('../models/Member');
 
 // when creating an event, date and time must be in String format (date = MM/DD/YYY, time = HH:MM AM/PM) and NOT Date Object format !!!
 const createEvent = async (req, res) => {
@@ -51,6 +52,12 @@ const readEvent = async (eventID) => {
         throw new Error('Error finding event');
     }
 }
+
+exports.getEventAttendance = async (id) => {
+    const event = await Event.findOne({ eventID: id }).lean();
+    const attendanceList = await Member.find({ studentId: { $in: event.attendance_list } }).lean();
+    return attendanceList;
+};
 
 const readAllEvents = async(req, res) => {
     try{
@@ -105,4 +112,4 @@ const deleteEvent = async(req, res) => {
 
 }
 
-module.exports = { createEvent, readEvent, readAllEvents, updateEvent, deleteEvent };
+module.exports = { createEvent, readEvent, readAllEvents, updateEvent, deleteEvent, getEventAttendance };
