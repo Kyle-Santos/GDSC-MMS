@@ -71,15 +71,16 @@ const readAllEvents = async(req, res) => {
 }
 
 const updateEvent = async(req, res) => {
-    const {eventID, editedEventData} = req.body;
-    
+    const { editedEventData, eventID } = req.body;
+
     try{
-        const updatedEvent = await Event.findOneAndUpdate({eventID}, {
+        const updatedEvent = await Event.findOneAndUpdate({ eventID: eventID }, {
           $set: {
-            date: editedEventData.date,
-            venue: editedEventData.venue,
-            time: editedEventData.time,
-            projectHeadID: editedEventData.projectHeadID,
+            date: editedEventData['event-date'],
+            venue: editedEventData['event-venue'],
+            time: editedEventData['event-time'],
+            attendeeCount: parseInt(editedEventData['event-attendee-count'], 10),
+            projectHeadID: parseInt(editedEventData['event-project-head'], 10),
           }
         }, {new: true}
         );

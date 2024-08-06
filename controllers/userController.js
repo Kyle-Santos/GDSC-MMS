@@ -51,29 +51,25 @@ const readUser = async(req, res) => {
 }
 
 const updateUser = async(req, res) => {
-    const {studentID, editedUserData} = req.body;
+    const { editedUserData, id } = req.body;
 
-    const contactnum = editedUserData.contactnum === "null" ? null : editedUserData.contactnum;
-    
-    try{
-        const updatedUser = await User.findOneAndUpdate({studentID}, {
-          $set: {
-            firstname: editedUserData.firstname,
-            lastname: editedUserData.lastname,
+    try {
+    const updatedUser = await User.findOneAndUpdate({ studentId: id }, {
+        $set: {
             email: editedUserData.email,
-            contactnum: contactnum,
-          }
-        }, {new: true}
-        );
-        
-        if (!updatedUser) { // didn't find user
-          return res.status(404).json({ message: 'User not found' });
+            contact: editedUserData.contactnum,
         }
-        res.status(200).json({user:updatedUser});
-    }catch (error) {
+    }, { new: true });
+    
+    if (!updatedUser) {
+        return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.status(200).json({ user: updatedUser });
+    } catch (error) {
         console.error('Error updating user:', error);
         return res.status(500).json({ error: 'Internal server error' });
-      }
+    }
 }
 
 const updateUserLogin = async(req, res) => {

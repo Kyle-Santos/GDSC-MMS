@@ -191,27 +191,10 @@ function add(server){
     });
 
     // Update user route
-    server.post('/update-user', async (req, res) => {
-        const { editedUserData, id } = req.body;
+    server.post('/update-user', userController.updateUser);
 
-        try {
-        const updatedUser = await Member.findOneAndUpdate({ studentId: id }, {
-            $set: {
-                email: editedUserData.email,
-                contact: editedUserData.contactnum,
-            }
-        }, { new: true });
-        
-        if (!updatedUser) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        res.status(200).json({ user: updatedUser });
-        } catch (error) {
-            console.error('Error updating user:', error);
-            return res.status(500).json({ error: 'Internal server error' });
-        }
-    });
+    // Update event route
+    server.post('/update-event', eventController.updateEvent);
 
     server.get('/login', (req,res) => {
         res.render('login', {

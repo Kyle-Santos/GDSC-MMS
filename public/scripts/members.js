@@ -79,7 +79,7 @@ $(document).ready(function() {
             // AJAX request to updateUser endpoint
             $.ajax({
                 type: 'POST',
-                url: '/update-user', // Update this with the actual endpoint
+                url: '/update-user', 
                 contentType: 'application/json',
                 data: JSON.stringify({
                     editedUserData: formData,

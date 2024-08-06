@@ -168,6 +168,7 @@
                 const response = await fetch(`/event/${eventID}`);
                 if (response.ok) {
                     const event = await response.json();
+                    document.querySelector('.event-body').id = eventID;
                     document.querySelector('.event-name').textContent = event.name;
                     document.getElementById('event-date').textContent = event.date;
                     document.getElementById('event-venue').textContent = event.venue;
