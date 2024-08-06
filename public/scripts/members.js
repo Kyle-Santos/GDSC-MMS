@@ -18,15 +18,25 @@ $(document).ready(function() {
         $(this).hide();
 
         // Replace spans with input fields
-        $('.profile-details .info-item .value').each(function() {
-            var $this = $(this);
-            var input = $('<input>', {
-                type: 'text',
-                placeholder: $this.text(),
-                id: $this.attr('id')
-            });
-            $this.replaceWith(input);
+        var $contact = $('.profile-details .info-item #contactnum');
+        var input = $('<input>', {
+            type: 'text',
+            placeholder: $contact.text(),
+            id: $contact.attr('id')
+        }).css({
+            'color': 'black'
         });
+        $contact.replaceWith(input);
+
+        var $email = $('.profile-details .info-item #email');
+        var input = $('<input>', {
+            type: 'text',
+            placeholder: $email.text(),
+            id: $email.attr('id')
+        }).css({
+            'color': 'black'
+        });
+        $email.replaceWith(input);
 
         // Replace dispute link with Save Changes and Discard Changes buttons
         var $disputeLink = $('.blacklist');
@@ -35,7 +45,6 @@ $(document).ready(function() {
         var saveBtn = $('<a>', {
             text: 'Save Changes',
             class: 'save-changes',
-            href: '#'
         });
 
         var discardBtn = $('<a>', {
@@ -49,15 +58,46 @@ $(document).ready(function() {
         // Add event listeners for Save Changes and Discard Changes buttons
         $('.save-changes').on('click', function(event) {
             event.preventDefault();
+
+            if ($('#email').val() == "" && $('#contactnum').val() == "") {
+                resetEdit();
+                return;
+            }
+
+            // Gather form data
+            const formData = {};
             $('.profile-details .info-item input').each(function() {
                 var $this = $(this);
-                var span = $('<span>', {
-                    class: 'value',
-                    text: $this.val()
-                });
-                $this.replaceWith(span);
+                if ($this.val() == "") {
+                    formData[$this.attr('id')] = $this.attr('placeholder');    
+                }
+                else {
+                    formData[$this.attr('id')] = $this.val();
+                }
             });
-            resetEdit();
+
+            // AJAX request to updateUser endpoint
+            $.ajax({
+                type: 'POST',
+                url: '/update-user', // Update this with the actual endpoint
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    editedUserData: formData,
+                    id: parseInt($('#idnumber').text(), 10)
+                }),
+                success: function(response) {
+                    console.log('User updated successfully:', response);
+                    
+                    // Replace inputs with spans
+                    $('#contactnum').attr('placeholder', formData['contactnum']);
+                    $('#email').attr('placeholder', formData['email']);
+                    resetEdit();
+                },
+                error: function(error) {
+                    console.error('Error updating user:', error);
+                    resetEdit();
+                }
+            });
         });
 
         $('.discard-changes').on('click', function(event) {

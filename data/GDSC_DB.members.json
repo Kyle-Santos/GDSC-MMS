@@ -1,0 +1,144 @@
+[{
+  "_id": {
+    "$oid": "669bc7ae1734a888db202145"
+  },
+  "email": "kenneth_vidal@dlsu.edu.ph",
+  "firstname": "Kenneth",
+  "lastname": "Vidal",
+  "password": "k_vidal_122",
+  "position": "Admin",
+  "profilepicture": "",
+  "studentId": 12214233,
+  "violationlist": [
+    "1001"
+  ],
+  "contact": "9686613474"
+},
+{
+  "_id": {
+    "$oid": "66a9c2be6dfe1712a331b416"
+  },
+  "email": "hannah_moriah_tayzon@dlsu.edu.ph",
+  "firstname": "Hannah Moriah",
+  "lastname": "Tayzon",
+  "password": "",
+  "position": "Member",
+  "profilepicture": "",
+  "studentId": 12209295,
+  "violationlist": [
+    "1001"
+  ],
+  "contact": "9276671113"
+},
+{
+  "_id": {
+    "$oid": "66a9c2c36dfe1712a331b417"
+  },
+  "email": "quinty_f_santos@dlsu.edu.ph",
+  "firstname": "Quinty",
+  "lastname": "Santos",
+  "password": "q_santos_123",
+  "position": "Officer",
+  "profilepicture": "",
+  "studentId": 12347779,
+  "violationlist": [
+    "1001"
+  ],
+  "contact": "9190789071"
+},
+{
+  "_id": {
+    "$oid": "66a9c2c86dfe1712a331b418"
+  },
+  "email": "ryan_kevin_koa@dlsu.edu.ph",
+  "firstname": "Ryan Kevin",
+  "lastname": "Koa",
+  "password": "r_koa_122",
+  "position": "Officer",
+  "profilepicture": "",
+  "studentId": 12271802,
+  "violationlist": [
+    "1001"
+  ],
+  "contact": "9369295486"
+},
+{
+  "_id": {
+    "$oid": "66a9c2ce6dfe1712a331b419"
+  },
+  "email": "zhienj_bigalbal@dlsu.edu.ph",
+  "firstname": "Zhienj",
+  "lastname": "Bigalbal",
+  "password": "r_bigalbal_122",
+  "position": "Officer",
+  "profilepicture": "",
+  "studentId": 12206806,
+  "violationlist": [
+    "1001"
+  ],
+  "contact": "9777540854"
+},
+{
+  "_id": {
+    "$oid": "66a9c2d46dfe1712a331b41a"
+  },
+  "email": "aebrahm_ramos@dlsu.edu.ph",
+  "firstname": "Aebrahm Clyde",
+  "lastname": "Ramos",
+  "password": "a_ramos_122",
+  "position": "Officer",
+  "profilepicture": "",
+  "studentId": 12216496,
+  "violationlist": [
+    "1001"
+  ],
+  "contact": "9166540416"
+},
+{
+  "_id": {
+    "$oid": "66a9c2db6dfe1712a331b41c"
+  },
+  "email": "josiah_luistro@dlsu.edu.ph",
+  "firstname": "Josiah Mari",
+  "lastname": "Luistro",
+  "password": "j_luistro_122",
+  "position": "Officer",
+  "profilepicture": "",
+  "studentId": 12207926,
+  "violationlist": [
+    "1001"
+  ],
+  "contact": "9178233313"
+},
+{
+  "_id": {
+    "$oid": "66a9c2e06dfe1712a331b41d"
+  },
+  "email": "amor_deguzman@dlsu.edu.ph",
+  "firstname": "Amor",
+  "lastname": "De Guzman",
+  "password": "a_guzman_122",
+  "position": "Admin",
+  "profilepicture": "",
+  "studentId": 12206377,
+  "violationlist": [
+    "1001"
+  ],
+  "contact": "9062062542"
+},
+{
+  "_id": {
+    "$oid": "66a9c2e66dfe1712a331b41e"
+  },
+  "email": "yazan_homssi@dlsu.edu.ph",
+  "firstname": "Yazan",
+  "lastname": "Homssi",
+  "password": "y_homssi_122",
+  "position": "Officer",
+  "profilepicture": "",
+  "studentId": 12206824,
+  "violationlist": [
+    "1001"
+  ],
+  "contact": "9391806671"
+}]

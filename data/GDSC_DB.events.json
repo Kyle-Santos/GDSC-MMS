@@ -1,0 +1,90 @@
+[{
+  "_id": {
+    "$oid": "66950f7fcf6d9c3acbffb6cc"
+  },
+  "eventID": 20240703,
+  "date": "2024-07-03",
+  "venue": "Brother Andrew Gonzales Hall, De La Salle University",
+  "time": "1:00 PM",
+  "attendeeCount": 52,
+  "projectHeadID": 12209295,
+  "__v": 0,
+  "name": "DevFest: Beta Launch",
+  "attendance_list": [
+    12214233,
+    12209295,
+    12347779,
+    12271802
+  ]
+},
+{
+  "_id": {
+    "$oid": "669533569d2a564e5b47b7a7"
+  },
+  "eventID": 20240420,
+  "name": "Frontier",
+  "date": "2024-04-20",
+  "venue": "Globe Tower, BGC",
+  "time": "01:30 PM",
+  "attendeeCount": 75,
+  "projectHeadID": 12271802,
+  "__v": [
+    12271802,
+    12206806,
+    12216496
+  ],
+  "attendance_list": [
+    12216496,
+    12207926,
+    12206377
+  ]
+},
+{
+  "_id": {
+    "$oid": "6695571347c6d2101a93aa0a"
+  },
+  "eventID": 20240603,
+  "name": "Machine Learning Bootcamp",
+  "date": "2024-06-03",
+  "venue": "Google Meet",
+  "time": "6:00 PM",
+  "attendeeCount": 51,
+  "projectHeadID": 12347779,
+  "__v": 5,
+  "attendance_list": []
+},
+{
+  "_id": {
+    "$oid": "66a9b18417ae62bce4c771ed"
+  },
+  "eventID": 20240527,
+  "name": "Cloud Computing Bootcamp",
+  "date": "2024-05-27",
+  "venue": "Google Meet",
+  "time": "6:00 PM",
+  "attendeeCount": 62,
+  "projectHeadID": 12206180,
+  "__v": 0,
+  "attendance_list": [
+    12206377,
+    12209295
+  ]
+},
+{
+  "_id": {
+    "$oid": "66a9b19017ae62bce4c771ee"
+  },
+  "eventID": 20240206,
+  "name": "UX Fundamentals",
+  "date": "2024-02-26",
+  "venue": "Zoom",
+  "time": "5:00 PM",
+  "attendeeCount": 52,
+  "projectHeadID": 12209295,
+  "__v": 0,
+  "attendance_list": [
+    1220925,
+    12214233,
+    12271802
+  ]
+}]

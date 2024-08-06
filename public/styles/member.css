@@ -241,6 +241,7 @@ td {
     justify-content: space-between;
     gap: 40px;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .delete-user, .blacklist, .save-changes, .discard-changes {
