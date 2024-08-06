@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const { off } = require('process');
 const eventController = require('../controllers/eventController');
+const userController = require('../controllers/userController');
 
 function errorFn(err) {
     console.log("Error found");
@@ -10,7 +11,7 @@ function errorFn(err) {
 
 //adding schemas
 const Member = require("../models/Member");
-const Model = require("../models/Event");
+const Event = require("../models/Event");
 
 // Read and parse the JSON file
 const rawData = fs.readFileSync(path.join(__dirname, '../data/officer.json'));
@@ -41,14 +42,23 @@ function add(server){
 
     // get events page (admin)
     server.get('/events', async (req, res) => {
-        Model.find().lean().then(function(events){
-
-            res.render('events',{
-                layout: 'index',
-                title: "Events",
-                isEvents: true,
-                events: events
+        Event.find().lean().then(function(events){
+            Member.find().lean().then( function(member){
+                let positions = member.map(member => member.position);
+                let uniquePositions = [...new Set(positions)];
+                let idNos = member.map(member => {
+                return member.studentId.toString().substring(0, 3);
+                });
+                let uniqueId = [...new Set(idNos)];
+                res.render('events',{
+                    layout: 'index',
+                    title: "Events",
+                    isEvents: true,
+                    events: events,
+                    'positions': uniquePositions,
+                    'idnumbers': uniqueId
             })
+            }).catch(errorFn);
         }).catch(errorFn);
     });
 
@@ -116,13 +126,13 @@ function add(server){
         console.log(req.body);
         const {position, firstname, lastname, contact, email, studentId, password} = req.body;
         const newMember = new Member({
-            position,
+            studentId,
             firstname, 
             lastname,
-            contact,
             email,
-            studentId,
             password,
+            contact,
+            position,
             profilepicture: "",
             violations: []
         });
@@ -132,11 +142,46 @@ function add(server){
         });
     });
 
+    //TODO: ADD MEMBER AND ATTENDANCE IN EVENT
+    server.post('/add-member-events', async function(req, res){
+        const { eventId, position, firstname, lastname, contact, email, studentId, password} = req.body;
+        try {
+            const event = await Event.findOne({ eventID: eventId });
+            if (!event) {
+                return res.status(404).json({ message: 'Event not found' });
+            }
+            if (!event.attendance_list.includes(studentId)) {
+                event.attendance_list.push(studentId);
+                event.attendeeCount++;
+                await event.save();
+            }
+            res.redirect(`/events`);
+        } catch (error) {
+            errorFn(error);
+            res.status(500).json({ message: 'Error adding member to event' });
+        }
+
+        const newMember = new Member({
+            studentId,
+            firstname, 
+            lastname,
+            email,
+            password,
+            contact,
+            position,
+            profilepicture: "",
+            violations: []
+        });
+        await newMember.save().then(function(){
+            console.log('Added Member Successfully!', newMember);
+        }); 
+    });
+
     //DELETING USERS
     server.post('/delete-member', async function(req,res){
         const{ studentid } = req.body;
         try {
-            await Member.findOneAndDelete({ studentId });
+            await Member.findOneAndDelete({ studentId: studentid });
             console.log('Deleted Member');
             res.redirect('/members');
         } catch (error) {
@@ -165,7 +210,7 @@ function add(server){
             ];
         }
         if (id && id !== '0') {
-            filter.studentid = id;
+            filter.studentId = id;
         }
         if (position && position !== 'position') {
             filter.position = position;
@@ -175,7 +220,7 @@ function add(server){
         }
     
         try {
-            const members = await memberModel.find(filter).lean();
+            const members = await Member.find(filter).lean();
             res.json(members);
         } catch (error) {
             console.error(error);

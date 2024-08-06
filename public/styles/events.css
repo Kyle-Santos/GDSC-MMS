@@ -204,7 +204,7 @@ select, input {
 
 .footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 40px;
     margin-bottom: 15px;
 }
@@ -300,6 +300,23 @@ select, input {
     font-weight: 500;
 }
 
+#add-user-btn {
+    background-color: #EEEEEE;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    word-wrap: break-word;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#add-user-btn:hover {
+    background-color: #d9d9d9;
+}
+
 .add-user:hover,
 .add-user:focus,
 .cancel:hover,
@@ -318,4 +335,20 @@ select, input {
 
 #add-user .footer {
     gap: 80px;
+}
+
+.add-user {
+    background-color: white;
+    border: unset;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.add-user:hover,
+.add-user:focus,
+.cancel:hover,
+.cancel:focus {
+    color: rgb(98, 88, 88);
+    text-decoration: none;
+    cursor: pointer;
 }

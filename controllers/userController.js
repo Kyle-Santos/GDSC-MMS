@@ -1,5 +1,5 @@
 const User = require('../models/Member');
-const bcrypt = require('bcrypt');
+//const bcrypt = require('bcrypt');
 
 const createUser = async(req, res) => {
     const {firstname, lastname, email, password} = req.body;
@@ -115,4 +115,14 @@ const deleteUser = async(req, res) => {
 
 }
 
-module.exports = { createUser, readUser, updateUser, updateUserLogin, deleteUser };
+const readAllMembers = async (req, res) => {
+    try{
+        const matchingUsers = await User.find({}).lean().exec();
+
+        return matchingUsers;
+
+    }catch(error){
+        res.status(500).json({message: 'error finding users'});
+    }
+}
+module.exports = { createUser, readUser, updateUser, updateUserLogin, deleteUser, readAllMembers };

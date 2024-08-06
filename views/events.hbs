@@ -8,39 +8,42 @@
                 Adding User
             </div>   
             <div class="add-user-body">
-                <div id="add-user-details">
-                    <div class="info-item">
-                        <span class="label">Position</span>
-                        <select name="position" id="position">
-                        <option value="Member">Member</option>
-                        <option value="Officer">Officer</option>
-                    </select>
+                <form id="add-user-form" action="/add-member-events" method="POST">
+                    <input type="hidden" id= "eventId" name="eventId" value="">
+                    <div id="add-user-details">
+                        <div class="info-item">
+                            <span class="label">Position</span>
+                            <select name="position" id="position">
+                                <option value="Member">Member</option>
+                                <option value="Officer">Officer</option>
+                            </select>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">First Name</span>
+                            <input id="firstname" name="firstname" placeholder="First Name">
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Last Name</span>
+                            <input id="lastname" name="lastname"placeholder="Last Name">
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Contact Number</span>
+                            <input id="contact" name="contact"placeholder="0999234****">
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Email Address</span>
+                            <input id="email" name="email"placeholder="email@dlsu.edu.ph">
+                        </div>
+                        <div class="info-item">
+                            <span class="label">ID #</span>
+                            <input id="studentId" name="studentId"placeholder="121*****">
+                        </div>
+                    </div> 
+                    <div class="footer">
+                        <button type="submit" id="submit-button" class="add-user">Add User</button>
+                        <a class="cancel">Cancel</a>
                     </div>
-                    <div class="info-item">
-                        <span class="label">First Name</span>
-                        <input id="fName" placeholder="First Name">
-                    </div>
-                    <div class="info-item">
-                        <span class="label">Last Name</span>
-                        <input id="lName" placeholder="Last Name">
-                    </div>
-                    <div class="info-item">
-                        <span class="label">Contact Number</span>
-                        <input id="contact" placeholder="0999234****">
-                    </div>
-                    <div class="info-item">
-                        <span class="label">Email Address</span>
-                        <input id="email" placeholder="email@dlsu.edu.ph">
-                    </div>
-                    <div class="info-item">
-                        <span class="label">ID #</span>
-                        <input id="id-number" placeholder="121*****">
-                    </div>
-                </div> 
-                <div class="footer">
-                    <a class="add-user" href="#">Add User</a>
-                    <a class="cancel">Cancel</a>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -59,7 +62,6 @@
         </div>
         <div>
             <button id="add-user-btn">Add User</button>
-            <button>Pending Reports</button>
         </div>
         <div class="content">      
             <div class="left">
@@ -67,17 +69,21 @@
                     <input placeholder="Find by name"> 
 
                     <button>Search</button>
-                    <select name="id-num" id="id-num">
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
+                    <select name="id" id="id-num">
+                        <option value="0">ID#</option>
+                        {{#each idnumbers}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
                     </select>
                     <select name="position" id="position">
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
+                        <option value="position">Position</option>
+                        {{#each positions}}
+                            <option value="{{this}}">{{this}}</option>
+                        {{/each}}
                     </select>
                     <select name="status" id="status">
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
+                        <option value="status">Status</option>
+                        <option value="cleared">Cleared</option>
                     </select>
                 </div>
                 
@@ -144,12 +150,14 @@
         document.addEventListener('DOMContentLoaded', async () => {
             const eventSelect = document.getElementById('event-name');
             const selectedEventID = eventSelect.options[eventSelect.selectedIndex].getAttribute('data-eventid');
+            const eventIdInput = document.getElementById('eventId');
             await fetchEventDetails(selectedEventID);
             await fetchAttendanceList(selectedEventID);
 
             // show event details upon event selection change
             eventSelect.addEventListener('change', async (event) => {
                 const selectedEventID = event.target.options[event.target.selectedIndex].getAttribute('data-eventid');
+                eventIdInput.value = selectedEventID;
                 await fetchEventDetails(selectedEventID);
                 await fetchAttendanceList(selectedEventID);
             });

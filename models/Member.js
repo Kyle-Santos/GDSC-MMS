@@ -20,20 +20,20 @@ const memberSchema = new Schema({
     },
     password: {
         type: String,
-        required: true
+        default: ""
     },
     // CONFIRM: is contact number optional?
-    contactnum:{
+    contact:{
         type: String,
         default: null
     },
     position:{
         type: String,
-        enum: ['Admin', 'Officer', 'Student'],
+        enum: ['Admin', 'Officer', 'Member'],
         default: 'Student',
         required: true
     },
-    profile_picture_url:{
+    profilepicture:{
         type: String,
         default: null
     },
