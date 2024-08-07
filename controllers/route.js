@@ -37,7 +37,6 @@ function add(server){
             'officer': officer[0],
             isForOfficer: true,
         });
-            
     });
 
     // get events page (admin)
@@ -142,7 +141,6 @@ function add(server){
         });
     });
 
-    //TODO: ADD MEMBER AND ATTENDANCE IN EVENT
     server.post('/add-member-events', async function(req, res){
         const { eventId, position, firstname, lastname, contact, email, studentId, password} = req.body;
         try {

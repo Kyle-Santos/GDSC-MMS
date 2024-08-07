@@ -396,3 +396,16 @@ td {
 #add-user .footer {
     gap: 80px;
 }
+
+.view-reports
+{
+    background-color: white;
+    color: black;
+    border: unset;
+}
+
+.view-reports:hover
+{
+    cursor: pointer;
+    color: darkgray;
+}
