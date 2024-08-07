@@ -38,14 +38,23 @@ function add(server){
         }
 
         console.log("isLoggedIn cookie: ", userName)
-        res.render('landing-page', { 
-            layout: 'index',
-            title: "Home",
-            isLoggedIn,
-            userPosition,
-            userName
-        });
-            
+        if (isLoggedIn){
+            const userData = JSON.parse(req.cookies.memberData);
+            if (userPosition = "Officer"){
+                res.redirect(`/officer?studentid=${userData.id}`);
+            }
+            res.render('landing-page', { 
+                layout: 'index',
+                title: "Home",
+                isLoggedIn,
+                userPosition,
+                userName
+            });
+        }
+        else{
+            res.redirect('/login');
+        }
+
     });
 
     server.post('/login-attempt', authController.login); // Use the auth controller for login attempts
@@ -60,6 +69,7 @@ function add(server){
     server.get('/officer', async (req, res) => {
         try{
             const studentId = req.query.studentid;
+            const isLoggedIn = req.cookies.isLoggedIn;
             const member = await Member.findOne({ studentId: studentId }).lean();
 
             if(member){

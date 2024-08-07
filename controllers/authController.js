@@ -20,7 +20,8 @@ const login = async (req, res) => {
 
         const userData = JSON.stringify({
             position: member.position,
-            name: member.firstname // Add any other fields you want to include
+            name: member.firstname,
+            id: member.studentId
         });
 
         // Set a cookie indicating login status
