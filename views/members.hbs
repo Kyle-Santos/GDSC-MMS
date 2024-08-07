@@ -56,9 +56,6 @@
     <!--Add User and Pending Reports Buttons-->
     <div class="add-user-container">
         <button id="add-user-btn">Add User</button>
-        <button class="pending-reports-btn">
-            Pending Reports
-        </button>
     </div>
 
     <div class = "main-content-container">
@@ -148,9 +145,12 @@
                             <span class="value green" id="last-event">Google Dev Fest</span>
                         </div>
                     </div>
-                    <div>
-                        <button class="view-reports" id="view-reports-btn">View Reports</button>
-                    </div>
+                    <form id="/view-reports" action="/officer" method="GET">
+                        <div>
+                            <input type="hidden" name="studentid" id="report-studentid">
+                            <button type="submit" class="view-reports" id="view-reports-btn">View Reports</button>
+                        </div>
+                    </form>
                     <form id="/delete-member-form" action="/delete-member" method="POST">
                         <input type="hidden" name="studentid" id="delete-studentid">
                         <div class="footer">
@@ -196,6 +196,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector(".profile-info h3").textContent = `${member.lastname}, ${member.firstname}`;
         document.querySelector(".profile-info p").textContent = member.position;
         document.querySelector("#delete-studentid").value = member.studentId;
+        document.querySelector("#report-studentid").value = member.studentId;
     }
 
     const deleteMemberForm = document.getElementById("delete-member-form");

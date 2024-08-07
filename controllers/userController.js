@@ -40,14 +40,24 @@ const readUser = async(req, res) => {
     const {studentID} = req.body;
 
     try{
-        const matchingUser = await User.findOne({studentID: studentID}).exec();
-
+        const matchingUser = await User.findOne({studentId: studentID}).exec();
         res.status(201).json(matchingUser);
 
     }catch(error){
         res.status(500).json({message: 'error finding user'});
     }
 
+}
+
+const getUser = async(req, res) => {
+    const selectedID = req.query.studentId;
+    try {
+        const matchingUser = await User.findOne({studentId: selectedID}).exec();
+        res.status(201).json(matchingUser);
+
+    }catch(error){
+        res.status(500).json({message: 'error finding user'});
+    }
 }
 
 const updateUser = async(req, res) => {

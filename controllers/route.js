@@ -13,7 +13,7 @@ function errorFn(err) {
 //adding schemas
 const Member = require("../models/Member");
 const Event = require("../models/Event");
-
+const Violation = require("../models/Violation");
 // Read and parse the JSON file
 const rawData = fs.readFileSync(path.join(__dirname, '../data/officer.json'));
 const officer = JSON.parse(rawData);
@@ -57,16 +57,37 @@ function add(server){
     server.post('/submit-event', eventController.createEvent);
     
     // get officer page (for officer accounts)
-    server.get('/officer', (req, res) => {
-        const isLoggedIn = req.cookies.isLoggedIn;
-        res.render('officer', { 
-            layout: 'index',
-            title: "Officer",
-            'officer': officer[0],
-            isForOfficer: true,
-            isLoggedIn
-        });
+    server.get('/officer', async (req, res) => {
+        try{
+            const studentId = req.query.studentid;
+            const member = await Member.findOne({ studentId: studentId }).lean();
+
+            if(member){
+                const violations = await Violation.find({
+                    case_id: { $in: member.violations }
+                }).lean();
+
+                res.render('officer', { 
+                    layout: 'index',
+                    title: "Officer",
+                    'officer': member,
+                    'violation-list': violations,
+                    isForOfficer: true,
+                });
+            } else {
+                res.status(404).render('404', { // Assuming you have a 404 page
+                    layout: 'index',
+                    title: "Not Found",
+                    message: "Member not found"
+                });
+            }
+        } catch (error){
+            errorFn(error);
+            res.status(500).json({ message: 'Error fetching officer details' });
+        }
+        
     });
+            
 
     // get events page (admin)
     server.get('/events', async (req, res) => {
