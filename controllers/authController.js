@@ -24,7 +24,6 @@ const login = async (req, res) => {
         });
 
         const isLoggedIn = req.cookies.isLoggedIn;
-        console.log('isLoggedIn cookie lmao:', isLoggedIn); // Print the cookie value
         res.send(`
             <script>
                 window.location.href = '/';
