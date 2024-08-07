@@ -43,13 +43,15 @@ function add(server){
             if (userPosition = "Officer"){
                 res.redirect(`/officer?studentid=${userData.id}`);
             }
-            res.render('landing-page', { 
-                layout: 'index',
-                title: "Home",
-                isLoggedIn,
-                userPosition,
-                userName
-            });
+            else{
+                res.render('landing-page', { 
+                    layout: 'index',
+                    title: "Home",
+                    isLoggedIn,
+                    userPosition,
+                    userName
+                });
+            }
         }
         else{
             res.redirect('/login');
