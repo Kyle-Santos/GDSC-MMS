@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const memberSchema = new Schema({
-    studentID: {
+    studentId: {
         type: Number,
         required: true
     },

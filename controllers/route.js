@@ -75,11 +75,6 @@ function add(server){
                     isForOfficer: true,
                 });
             } else {
-                res.status(404).render('404', { // Assuming you have a 404 page
-                    layout: 'index',
-                    title: "Not Found",
-                    message: "Member not found"
-                });
                 res.status(404).json({ message: 'Page not found.' });
             }
         } catch (error){

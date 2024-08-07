@@ -35,7 +35,7 @@ const login = async (req, res) => {
         });
 
         if (member.position == "Officer"){
-            return res.redirect(`/officer?studentid=${member.studentID}`);
+            return res.redirect(`/officer?studentid=${member.studentId}`);
         }
 
         res.redirect('/');
