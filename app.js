@@ -11,7 +11,8 @@ const cookieParser = require('cookie-parser');
 const handlebarsHelpers = require('./helpers');
 
 // mongodb conn
-mongoose.connect('mongodb+srv://GDSC:t55kysWsTyd7qvNl@cluster0.kbfmtmh.mongodb.net/GDSC_DB');
+const MONGODB_URI = process.env.MONGODB_URI;
+mongoose.connect(MONGODB_URI);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
