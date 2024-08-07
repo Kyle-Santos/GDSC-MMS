@@ -170,6 +170,10 @@ body {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+.warnings-list th{
+    cursor:default
 }
 
 .warnings-list .status-icon {
@@ -222,3 +226,4 @@ body {
     color: #666;
     font-size: 16px;
 }
+
