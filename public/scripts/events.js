@@ -114,17 +114,19 @@ $(document).ready(function() {
     $('#search').on('click', function() {
         var name = $('#namesearch').val().toLowerCase().trim();
         var eventid = $('.event-body').attr('id');
+        var id = $('#id-num').val();
+        var position = $('#mem-position').val();
 
         // Make an AJAX request to get event attendance
         $.ajax({
             url: '/event/' + eventid + "/attendance",
             method: 'GET',
             success: function(attendanceList) {
-                if (name == "") {
+                if (name == "" && id === 0 && position === "position") {
                     populate(attendanceList);
                 }
                 else  {
-                    filterAttendanceList(attendanceList, name);
+                    filterAttendanceList(attendanceList, name, id, position);
                 }
             },
             error: function(error) {
@@ -133,11 +135,19 @@ $(document).ready(function() {
         });
     });
     
-    function filterAttendanceList(attendanceList, name) {
-        const attendees = attendanceList.filter(attendee => {
+    function filterAttendanceList(attendanceList, name, id, position) {
+        var attendees = attendanceList.filter(attendee => {
             var fullname = (attendee.firstname + " " + attendee.lastname).toLowerCase().trim();
             return fullname === name || fullname.includes(name);
         });
+
+        if (id && id !== '0') {
+            attendees = attendees.filter(member => member.studentId.toString().includes(id));
+        }
+
+        if (position && position !== 'position') {
+            attendees = attendees.filter(member => member.position === position);
+        }
 
         populate(attendees);
     }
