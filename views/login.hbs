@@ -1,28 +1,36 @@
-<div class="hero">
-  <img class="logo" src="/images/gdsc-logo.png" alt="‎ Logo Here!">
+    <div class="hero">
+        <img class="logo" src="/images/gdsc-logo.png" alt="‎ Logo Here!">
 
-  <div class="card">
+        <div class="card">
+            <h1>Login Account</h1>
 
-    <h1>Login Account</h1>
+            <form class="card-form" action="/login-attempt" method="POST">
+                <label for="email">DLSU Email:</label>
+                <input type="text" id="email" name="email" required="true">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required="true">
 
-    <form class="card-form" action="/login-attempt" method="POST">
+                <!-- Error message container -->
+                <div id="error-message" class="error-message"></div>
+                
+                <div class="optionals">
+                    <div class="left">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">‎ Remember Me</label>
+                    </div>
+                </div>
+                <button class="temporary" type="submit">Login</button>
 
-      <label for="email">DLSU Email:</label>
-      <input type="text" id="email" name="email" required="true">
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required="true">
-
-      <div class="optionals">
-        <div class="left">
-          <input type="checkbox" id="remember" name="remember">
-          <label for="remember">‎ Remember Me</label>
+            </form>
         </div>
-      </div>
+    </div>
 
-      <button class="temporary" type="submit">Login</button>
-
-    </form>
-    
-  </div>
+    <script>
+        // Handle displaying server-side error message
+        const urlParams = new URLSearchParams(window.location.search);
+        const errorMessage = urlParams.get('error');
         
-</div>
+        if (errorMessage) {
+            document.getElementById('error-message').textContent = errorMessage;
+        }
+    </script>

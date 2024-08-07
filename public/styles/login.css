@@ -88,6 +88,11 @@ textarea:focus, input:focus {
   margin-left: auto;
 }
 
+.error-message {
+  color: red;
+  text-align: center;
+}
+
 .temporary {
   background-color: #2C2C2B;
   color: white;
@@ -99,3 +104,5 @@ textarea:focus, input:focus {
   font-size: 16px;
   cursor: pointer;
 }
+
+

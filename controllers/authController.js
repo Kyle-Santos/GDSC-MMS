@@ -1,5 +1,4 @@
 const Member = require('../models/Member');
-const bcrypt = require('bcrypt');
 
 const login = async (req, res) => {
     const {email, password, rememberMe} = req.body;
@@ -8,14 +7,23 @@ const login = async (req, res) => {
         const member = await Member.findOne({email});
         
         if (!member){
-            return res.status(401).json({message: 'Invalid email'});
+            return res.redirect('/login?error=Invalid email or password');
         }
 
         const isPasswordValid = password == member.password;
 
         if(!isPasswordValid){
-            return res.status(401).json({message: 'Invalid password'})
+            return res.redirect('/login?error=Invalid email or password');
         }
+
+        if (member.position != "Admin"){
+            return res.redirect('/login?error=User is not an admin');
+        }
+
+        const userData = JSON.stringify({
+            position: member.position,
+            name: member.firstname // Add any other fields you want to include
+        });
 
         // Set a cookie indicating login status
         res.cookie('isLoggedIn', 'true', { 
@@ -23,12 +31,12 @@ const login = async (req, res) => {
             maxAge: rememberMe ? 30 * 24 * 60 * 60 * 1000 : undefined // 30 days if 'rememberMe' is checked
         });
 
-        const isLoggedIn = req.cookies.isLoggedIn;
-        res.send(`
-            <script>
-                window.location.href = '/';
-            </script>
-        `);
+        res.cookie('memberData', userData, {
+            httpOnly: false,
+            maxAge: rememberMe ? 30 * 24 * 60 * 60 * 1000 : undefined // 30 days if 'rememberMe' is checked
+        });
+
+        res.redirect('/');
 
     }catch (error){
 
@@ -38,8 +46,8 @@ const login = async (req, res) => {
 }
 
 const logout = async (req, res) => {
-    // Set a cookie indicating login status
     res.clearCookie('isLoggedIn');
+    res.clearCookie('memberData');
     res.send(`
         <script>
             window.location.href = '/';

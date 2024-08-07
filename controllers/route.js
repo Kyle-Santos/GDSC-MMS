@@ -19,15 +19,31 @@ const rawData = fs.readFileSync(path.join(__dirname, '../data/officer.json'));
 const officer = JSON.parse(rawData);
 
 function add(server){
-
     server.get('/', (req, res) => {
 
         const isLoggedIn = req.cookies.isLoggedIn;
-        console.log("isLoggedIn cookie: ", isLoggedIn)
+        let userName = 'Guest';
+        let userPosition = '';
+
+        if (req.cookies.memberData) {
+            try {
+                const userData = JSON.parse(req.cookies.memberData);
+                userName = userData.name;
+                userPosition = userData.position;
+            } catch (err) {
+                console.error('Failed to parse user data:', err);
+                // Optionally clear the cookie if parsing fails
+                res.clearCookie('memberData');
+            }
+        }
+
+        console.log("isLoggedIn cookie: ", userName)
         res.render('landing-page', { 
             layout: 'index',
             title: "Home",
-            isLoggedIn
+            isLoggedIn,
+            userPosition,
+            userName
         });
             
     });
