@@ -14,9 +14,6 @@ function errorFn(err) {
 const Member = require("../models/Member");
 const Event = require("../models/Event");
 const Violation = require("../models/Violation");
-// Read and parse the JSON file
-const rawData = fs.readFileSync(path.join(__dirname, '../data/officer.json'));
-const officer = JSON.parse(rawData);
 
 function add(server){
     server.get('/', (req, res) => {
