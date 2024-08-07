@@ -73,6 +73,7 @@ function add(server){
                     'officer': member,
                     'violation-list': violations,
                     isForOfficer: true,
+                    isLoggedIn
                 });
             } else {
                 res.status(404).json({ message: 'Page not found.' });
