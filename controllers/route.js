@@ -40,7 +40,7 @@ function add(server){
         console.log("isLoggedIn cookie: ", userName)
         if (isLoggedIn){
             const userData = JSON.parse(req.cookies.memberData);
-            if (userPosition = "Officer"){
+            if (userPosition == "Officer"){
                 res.redirect(`/officer?studentid=${userData.id}`);
             }
             else{
