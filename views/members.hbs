@@ -133,7 +133,7 @@
                         </div>
                         <div class="info-item">
                             <span class="label">Email:</span>
-                            <span class="value" id="email">{{selected-member.email}}</span>
+                            <span class="value" id="emailprofile">{{selected-member.email}}</span>
                         </div>
                         <div class="info-item">
                             <span class="label">ID #:</span>
@@ -186,12 +186,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function updateInfoContainer(member) {
-        document.querySelector("#contact-number").textContent = member.contact;
-        document.querySelector("#email").textContent = member.email;
-        document.querySelector("#id-number").textContent = member.studentId;
+        document.querySelector("#contactnum").textContent = member.contact;
+        document.querySelector("#emailprofile").textContent = member.email;
+        document.querySelector("#idnumber").textContent = member.studentId;
         document.querySelector(".profile-info h3").textContent = `${member.lastname}, ${member.firstname}`;
         document.querySelector(".profile-info p").textContent = member.position;
-        document.querySelector("#delete-studentid").value = member.studentid;
+        document.querySelector("#delete-studentid").value = member.studentId;
     }
 
     const deleteMemberForm = document.getElementById("delete-member-form");
@@ -224,11 +224,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    const searchBtn = document.getElementById("search-btn");
-    const searchName = document.getElementById("search-name");
-    const searchId = document.getElementById("search-id");
-    const searchPosition = document.getElementById("search-position");
-    const searchStatus = document.getElementById("search-status");
+    const searchBtn = document.querySelector(".search-btn");
+    const searchName = document.querySelector("input[placeholder='Find by name']");
+    const searchId = document.getElementById("id-num");
+    const searchPosition = document.getElementById("position");
+    const searchStatus = document.getElementById("status");
     const tableBody = document.getElementById("member-table-body");
 
     searchBtn.addEventListener("click", function() {
@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function() {
         members.forEach(member => {
             const row = document.createElement("tr");
             row.classList.add("member-row");
-            row.setAttribute("data-studentid", member.studentid);
+            row.setAttribute("data-studentid", member.studentId);
             row.innerHTML = `
                 <td>${member.lastname}, ${member.firstname}</td>
                 <td>${member.email}</td>
