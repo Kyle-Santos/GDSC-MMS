@@ -267,27 +267,28 @@ function add(server){
 
     //SEARCHING USERS
     server.get('/search-members', async (req, res) => {
-        const { name, id, position, status } = req.query;
-        let filter = {};
-    
-        if (name) {
-            filter.$or = [
-                { firstname: new RegExp(name, 'i') },
-                { lastname: new RegExp(name, 'i') }
-            ];
-        }
-        if (id && id !== '0') {
-            filter.studentId = id;
-        }
-        if (position && position !== 'position') {
-            filter.position = position;
-        }
-        if (status && status !== 'status') {
-            // Add status filter logic here if applicable
-        }
-    
+        const { name, id, position } = req.query;
+
+        // Retrieve all members from the database
         try {
-            const members = await Member.find(filter).lean();
+            let members = await Member.find().lean();
+
+            // Apply the filters in memory
+            if (name) {
+                members = members.filter(member => {
+                    const fullname = `${member.firstname} ${member.lastname}`.toLowerCase();
+                    return fullname === name || fullname.includes(name);
+                });
+            }
+
+            if (id && id !== '0') {
+                members = members.filter(member => member.studentId.toString().includes(id));
+            }
+
+            if (position && position !== 'position') {
+                members = members.filter(member => member.position === position);
+            }
+
             res.json(members);
         } catch (error) {
             console.error(error);

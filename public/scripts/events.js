@@ -103,8 +103,52 @@ $(document).ready(function() {
     $('.cancel').on('click', function() {
         $('#add-user').hide();
     });
-    
 
+    $('#search').on('click', function() {
+        var name = $('#namesearch').val().toLowerCase().trim();
+        var eventid = $('.event-body').attr('id');
+
+        // Make an AJAX request to get event attendance
+        $.ajax({
+            url: '/event/' + eventid + "/attendance",
+            method: 'GET',
+            success: function(attendanceList) {
+                if (name == "") {
+                    populate(attendanceList);
+                }
+                else  {
+                    filterAttendanceList(attendanceList, name);
+                }
+            },
+            error: function(error) {
+                console.error('Error fetching attendance:', error);
+            }
+        });
+    });
+    
+    function filterAttendanceList(attendanceList, name) {
+        const attendees = attendanceList.filter(attendee => {
+            var fullname = (attendee.firstname + " " + attendee.lastname).toLowerCase().trim();
+            return fullname === name || fullname.includes(name);
+        });
+
+        populate(attendees);
+    }
+
+    function populate(attendees) {
+        const attendanceListElement = $('#attendance-list');
+        attendanceListElement.empty();
+
+        attendees.forEach(member => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${member.lastname}, ${member.firstname}</td>
+                <td>${member.email}</td>
+                <td>${member.position}</td>
+            `;
+            attendanceListElement.append(row);
+        });
+    }
 
     function resetEdit() {
         // Replace spans with input fields

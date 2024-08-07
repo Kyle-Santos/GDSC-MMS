@@ -61,8 +61,8 @@
     <div class = "main-content-container">
         <div class="list-search-container">
             <div class="search-container">
-                <input placeholder="Find by name">
-                <div class="search-btn">
+                <input id="namesearch" placeholder="Find by name">
+                <div id="search" class="search-btn">
                     Search
                 </div>
                 <select name="id" id="id-num">
@@ -71,15 +71,11 @@
                         <option value="{{this}}">{{this}}</option>
                     {{/each}}
                 </select>
-                <select name="position" id="position">
+                <select name="position" id="mem-position">
                     <option value="position">Position</option>
                     {{#each positions}}
                         <option value="{{this}}">{{this}}</option>
                     {{/each}}
-                </select>
-                <select name="status" id="status">
-                    <option value="status">Status</option>
-                    <option value="cleared">Cleared</option>
                 </select>
             </div>
 
@@ -224,49 +220,5 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => console.error('Error deleting member:', error));
     });
     
-});
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const searchBtn = document.querySelector(".search-btn");
-    const searchName = document.querySelector("input[placeholder='Find by name']");
-    const searchId = document.getElementById("id-num");
-    const searchPosition = document.getElementById("position");
-    const searchStatus = document.getElementById("status");
-    const tableBody = document.getElementById("member-table-body");
-
-    searchBtn.addEventListener("click", function() {
-        fetchFilteredMembers();
-    });
-
-    function fetchFilteredMembers() {
-        const name = searchName.value;
-        const id = searchId.value;
-        const position = searchPosition.value;
-        const status = searchStatus.value;
-
-        fetch(`/search-members?name=${name}&id=${id}&position=${position}&status=${status}`)
-            .then(response => response.json())
-            .then(members => {
-                updateTable(members);
-            })
-            .catch(error => console.error("Error fetching filtered members:", error));
-    }
-
-    function updateTable(members) {
-        tableBody.innerHTML = "";
-        members.forEach(member => {
-            const row = document.createElement("tr");
-            row.classList.add("member-row");
-            row.setAttribute("data-studentid", member.studentId);
-            row.innerHTML = `
-                <td>${member.lastname}, ${member.firstname}</td>
-                <td>${member.email}</td>
-                <td>${member.position}</td>
-            `;
-            tableBody.appendChild(row);
-        });
-    }
 });
 </script>

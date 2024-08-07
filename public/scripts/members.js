@@ -114,6 +114,47 @@ $(document).ready(function() {
         $('#add-user').hide();
     });
     
+    $('#search').on('click', function() {
+        var name = $('#namesearch').val().toLowerCase().trim();
+        var id = $('#id-num').val();
+        var position = $('#mem-position').val();
+
+        var formData = {
+            name: name,
+            id: id,
+            position: position,
+        }
+
+        // Make an AJAX request to get event attendance
+        $.ajax({
+            url: '/search-members',
+            method: 'GET',
+            data: formData,
+            success: function(members) {
+                displaySearchResults(members);
+            },
+            error: function(error) {
+                console.error('Error fetching members:', error);
+            }
+        });
+    });
+
+    function displaySearchResults(members) {
+        var table = $('#member-table-body');
+        table.empty();
+
+        members.forEach(member => {
+            const row = document.createElement("tr");
+            row.classList.add("member-row");
+            row.setAttribute("data-studentid", member.studentId);
+            row.innerHTML = `
+                <td>${member.lastname}, ${member.firstname}</td>
+                <td>${member.email}</td>
+                <td>${member.position}</td>
+            `;
+            table.append(row);
+        });
+    }
 
 
     function resetEdit() {
