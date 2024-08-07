@@ -1,4 +1,4 @@
-// npm i express express-handlebars body-parser 
+// npm i express express-handlebars body-parser cookie-parser
 
 const express = require('express');
 const server = express();
