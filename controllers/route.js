@@ -3,6 +3,7 @@ const fs = require('fs');
 const { off } = require('process');
 const eventController = require('../controllers/eventController');
 const userController = require('../controllers/userController');
+const authController = require('../controllers/authController');
 
 function errorFn(err) {
     console.log("Error found");
@@ -18,24 +19,36 @@ const rawData = fs.readFileSync(path.join(__dirname, '../data/officer.json'));
 const officer = JSON.parse(rawData);
 
 function add(server){
+
     server.get('/', (req, res) => {
+
+        const isLoggedIn = req.cookies.isLoggedIn;
+        console.log("isLoggedIn cookie: ", isLoggedIn)
         res.render('landing-page', { 
             layout: 'index',
             title: "Home",
+            isLoggedIn
         });
             
     });
+
+    server.post('/login-attempt', authController.login); // Use the auth controller for login attempts
+
+    server.get('/logout', authController.logout); // Use the auth controller for login attempts
+
 
     // Route to handle form submission
     server.post('/submit-event', eventController.createEvent);
     
     // get officer page (for officer accounts)
     server.get('/officer', (req, res) => {
+        const isLoggedIn = req.cookies.isLoggedIn;
         res.render('officer', { 
             layout: 'index',
             title: "Officer",
             'officer': officer[0],
             isForOfficer: true,
+            isLoggedIn
         });
     });
 
@@ -49,13 +62,15 @@ function add(server){
                 return member.studentId.toString().substring(0, 3);
                 });
                 let uniqueId = [...new Set(idNos)];
+                const isLoggedIn = req.cookies.isLoggedIn;
                 res.render('events',{
                     layout: 'index',
                     title: "Events",
                     isEvents: true,
                     events: events,
                     'positions': uniquePositions,
-                    'idnumbers': uniqueId
+                    'idnumbers': uniqueId,
+                    isLoggedIn
             })
             }).catch(errorFn);
         }).catch(errorFn);
@@ -92,6 +107,7 @@ function add(server){
             });
             let uniqueId = [...new Set(idNos)];
             let selectedMember = members[0];
+            const isLoggedIn = req.cookies.isLoggedIn;
             res.render('members', {
                 layout: 'index',
                 title: "Members",
@@ -99,7 +115,8 @@ function add(server){
                 'member-list': members,
                 'selected-member': selectedMember,
                 'positions': uniquePositions,
-                'idnumbers': uniqueId
+                'idnumbers': uniqueId,
+                isLoggedIn
             });
         }).catch(errorFn);
     });
@@ -231,16 +248,6 @@ function add(server){
             res.status(500).json({ message: 'Error fetching members' });
         }
     });
-
-    // FOR TESTING ONLY
-    server.get('/dbtester', (req, res) => {
-        res.render('dbtester', {
-            layout: 'index',
-            title: "DBTester",
-        });
-    });
-    
-
 }
 
 module.exports.add = add;

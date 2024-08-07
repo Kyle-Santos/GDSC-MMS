@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 const memberSchema = new Schema({
-    studentId: {
+    studentID: {
         type: Number,
         required: true
     },
@@ -30,7 +30,7 @@ const memberSchema = new Schema({
     position:{
         type: String,
         enum: ['Admin', 'Officer', 'Member'],
-        default: 'Student',
+        default: 'Member',
         required: true
     },
     profilepicture:{
