@@ -92,6 +92,7 @@ function add(server){
                 let positions = member.map(member => member.position);
                 let uniquePositions = [...new Set(positions)];
                 let idNos = member.map(member => {
+                    return member.studentId.toString().substring(0, 3);
                 });
                 let uniqueId = [...new Set(idNos)];
                 const isLoggedIn = req.cookies.isLoggedIn;
@@ -99,7 +100,7 @@ function add(server){
                     layout: 'index',
                     title: "Events",
                     isEvents: true,
-                    events: events,
+                    'events': events,
                     'positions': uniquePositions,
                     'idnumbers': uniqueId,
                     isLoggedIn
@@ -135,6 +136,7 @@ function add(server){
             let uniquePositions = [...new Set(positions)];
 
             let idNos = members.map(member => {
+                return member.studentId.toString().substring(0, 3);
             });
             let uniqueId = [...new Set(idNos)];
             let selectedMember = members[0];
