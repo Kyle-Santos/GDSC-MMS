@@ -2,7 +2,9 @@
     <div class="top-nav">
         <div class="orgname-container">
             <img src="/images/gdsc.png">
-            Google Developers Student Clubs — MMS Admin
+            <a href ="/">
+                Google Developers Student Clubs — MMS Admin
+            </a>
         </div>
         <div class = "logout-btn">
             Logout
@@ -20,7 +22,7 @@
                             <span class="emoji"><img src="images/Avatar.svg"></span>
                         </div>
                         <div class="profile-info">
-                            <span><h3>{{officer.lName}}, {{officer.fName}}</h3></span>
+                            <span><h3>{{officer.lastname}}, {{officer.firstname}}</h3></span>
                             <p>Officer</p>
                         </div>
                     </div>
@@ -38,7 +40,7 @@
                         </div>
                         <div class="info-item">
                             <span class="label">ID #:</span>
-                            <span class="value" id="id-number">{{officer.id}}</span>
+                            <span class="value" id="id-number">{{officer.studentId}}</span>
                         </div>
                         <div class="info-item">
                             <span class="label">Disciplinary Status:</span>
@@ -67,12 +69,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{#each officer.warnings}}
+                            {{#each violation-list}}
                             <tr>
-                                <td>{{title}}</td>
-                                <td>{{date.$date}}</td>
-                                <td>{{oic}}</td>
-                                <td><div class="status-icon {{#if isPending}}green{{else}}orange{{/if}}"></div></td>
+                                <td>{{case_title}}</td>
+                                <td>{{case_date}}</td>
+                                <td>{{authorid}}</td>
+                                <td><div class="status-icon {{#eq case_status 'cleared'}}green{{else}}orange{{/eq}}"></div></td>
                             </tr>
                             {{/each}}
                         </tbody>

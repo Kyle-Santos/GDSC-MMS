@@ -5,6 +5,9 @@ const server = express();
 const mongoose = require('mongoose');
 const route = require('./controllers/route');
 
+//for eq to work
+const handlebarsHelpers = require('./helpers');
+
 // mongodb conn
 mongoose.connect('mongodb+srv://GDSC:t55kysWsTyd7qvNl@cluster0.kbfmtmh.mongodb.net/GDSC_DB');
 
@@ -23,6 +26,7 @@ const handlebars = require('express-handlebars');
 server.set('view engine', 'hbs');
 server.engine('hbs', handlebars.engine({
     extname: 'hbs',
+    helpers: handlebarsHelpers
 }));
 
 server.use(express.static('public'));
