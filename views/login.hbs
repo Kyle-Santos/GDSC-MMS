@@ -5,12 +5,12 @@
 
     <h1>Login Account</h1>
 
-    <form class="card-form">
+    <form class="card-form" action="/login-attempt" method="POST">
 
       <label for="email">DLSU Email:</label>
-      <input type="text" id="email" name="email">
-      <label for="password">Last Name:</label>
-      <input type="password" id="password" name="password">
+      <input type="text" id="email" name="email" required="true">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required="true">
 
       <div class="optionals">
         <div class="left">
@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <a class="temporary" type="submit" value="Login" href="/members">Login</a>
+      <button class="temporary" type="submit">Login</button>
 
     </form>
     

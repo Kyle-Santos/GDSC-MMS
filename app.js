@@ -4,6 +4,8 @@ const express = require('express');
 const server = express();
 const mongoose = require('mongoose');
 const route = require('./controllers/route');
+const cookieParser = require('cookie-parser');
+
 
 //for eq to work
 const handlebarsHelpers = require('./helpers');
@@ -18,7 +20,10 @@ db.once('open', () => {
 });
 
 const bodyParser = require('body-parser');
+
 server.use(express.json()); 
+server.use(cookieParser());
+
 server.use(express.urlencoded({ extended: true }));
 server.use(express.static('public'));
 
