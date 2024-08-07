@@ -1,9 +1,15 @@
 <div class="top-nav">
     <div class="orgname-container">
         <img src="/images/gdsc.png">
-        <a href ="/">
-            Google Developers Student Clubs — MMS Admin
-        </a>
+        {{#if isForOfficer}}
+            <a href ="">
+                Google Developers Student Clubs — MMS Admin
+            </a>
+        {{else}}
+            <a href ="/">
+                Google Developers Student Clubs — MMS Admin
+            </a>
+        {{/if}}
     </div>
     <div class = "top-nav-button-group-container">
         <a href="/members">

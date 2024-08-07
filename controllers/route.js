@@ -38,14 +38,25 @@ function add(server){
         }
 
         console.log("isLoggedIn cookie: ", userName)
-        res.render('landing-page', { 
-            layout: 'index',
-            title: "Home",
-            isLoggedIn,
-            userPosition,
-            userName
-        });
-            
+        if (isLoggedIn){
+            const userData = JSON.parse(req.cookies.memberData);
+            if (userPosition = "Officer"){
+                res.redirect(`/officer?studentid=${userData.id}`);
+            }
+            else{
+                res.render('landing-page', { 
+                    layout: 'index',
+                    title: "Home",
+                    isLoggedIn,
+                    userPosition,
+                    userName
+                });
+            }
+        }
+        else{
+            res.redirect('/login');
+        }
+
     });
 
     server.post('/login-attempt', authController.login); // Use the auth controller for login attempts
@@ -60,6 +71,7 @@ function add(server){
     server.get('/officer', async (req, res) => {
         try{
             const studentId = req.query.studentid;
+            const isLoggedIn = req.cookies.isLoggedIn;
             const member = await Member.findOne({ studentId: studentId }).lean();
 
             if(member){
@@ -73,13 +85,10 @@ function add(server){
                     'officer': member,
                     'violation-list': violations,
                     isForOfficer: true,
+                    isLoggedIn
                 });
             } else {
-                res.status(404).render('404', { // Assuming you have a 404 page
-                    layout: 'index',
-                    title: "Not Found",
-                    message: "Member not found"
-                });
+                res.status(404).json({ message: 'Page not found.' });
             }
         } catch (error){
             errorFn(error);
@@ -96,7 +105,7 @@ function add(server){
                 let positions = member.map(member => member.position);
                 let uniquePositions = [...new Set(positions)];
                 let idNos = member.map(member => {
-                return member.studentId.toString().substring(0, 3);
+                    return member.studentId.toString().substring(0, 3);
                 });
                 let uniqueId = [...new Set(idNos)];
                 const isLoggedIn = req.cookies.isLoggedIn;
@@ -104,7 +113,7 @@ function add(server){
                     layout: 'index',
                     title: "Events",
                     isEvents: true,
-                    events: events,
+                    'events': events,
                     'positions': uniquePositions,
                     'idnumbers': uniqueId,
                     isLoggedIn

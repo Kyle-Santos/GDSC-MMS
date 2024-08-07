@@ -1,6 +1,5 @@
-
 {{> top-nav isLoggedIn=isLoggedIn}}
-    
+
     <div class="container">
         <h2>Warnings Tracker</h2>
         <div class="content">
@@ -48,7 +47,7 @@
 
             <div class="warnings-list">
                 <div class="warning-table">
-                    <table>
+                    <table id="warningsTable">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -59,7 +58,7 @@
                         </thead>
                         <tbody>
                             {{#each violation-list}}
-                            <tr>
+                            <tr data-title="{{case_title}}" data-desc="{{case_desc}}">
                                 <td>{{case_title}}</td>
                                 <td>{{case_date}}</td>
                                 <td>{{authorid}}</td>
@@ -70,9 +69,27 @@
                     </table>
                 </div>
                 <div class="warning-details">
-                    <h3>Warning 1 Title</h3>
-                    <p>Description</p>
+                    <h3 id="warningTitle">Warning 1 Title</h3>
+                    <p id="warningDesc">Description</p>
                 </div>
             </div>
         </div>
     </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const table = document.getElementById('warningsTable');
+    const warningTitle = document.getElementById('warningTitle');
+    const warningDesc = document.getElementById('warningDesc');
+
+    table.addEventListener('click', async function(e) {
+        const row = e.target.closest('tr');
+        if (row) {
+            const title = row.getAttribute('data-title');
+            const desc = row.getAttribute('data-desc');
+            warningTitle.textContent = title;
+            warningDesc.textContent = desc;
+        }
+    });
+});
+</script>
