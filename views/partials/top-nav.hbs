@@ -12,6 +12,7 @@
         {{/if}}
     </div>
     <div class = "top-nav-button-group-container">
+        {{#unless isForOfficer}}
         <a href="/members">
             <div class="members-btn">
                 Members
@@ -22,6 +23,7 @@
                 Events
             </div>
         </a>
+        {{/unless}}
         {{#if isLoggedIn}}
             <a href="/logout">
                 <div class="logout-btn">Logout</div>
