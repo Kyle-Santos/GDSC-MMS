@@ -142,6 +142,26 @@ function add(server){
         }
     });
 
+    //ADDING EVENTS
+    server.post('/add-event', async (req,res) =>{
+        console.log(req.body);
+        const {eventname, eventdate, eventvenue, time, projectHeadID, attendanceCount} = req.body;
+        const eventID = Number(eventdate.replace(/-/g, '')); 
+        const newEvent = new Event({
+            eventID: eventID,
+            date: eventdate,
+            venue: eventvenue,
+            name: eventname,
+            time: time,
+            projectHeadID: projectHeadID,
+            attendancelist: [],
+            attendanceCount: attendanceCount
+        });
+        await newEvent.save().then(function(){
+            res.redirect('/events');
+        });
+    });
+
     server.get('/members', (req,res) => {
         Member.find().lean().then(function(members){
 
