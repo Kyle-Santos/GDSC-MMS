@@ -54,7 +54,7 @@ const readEvent = async (eventID) => {
 }
 
 const getEventAttendance = async (id) => {
-    const event = await Event.findOne({ eventId: id }).lean();
+    const event = await Event.findOne({ eventID: id }).lean();
     const attendanceList = await Member.find({ studentId: { $in: event.attendance_list } }).lean();
     return attendanceList;
 };
