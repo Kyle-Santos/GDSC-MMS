@@ -230,7 +230,7 @@ select, input {
 
 
 /* add user pop up */
-#add-user {
+#add-user, #add-event {
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.7); 
@@ -263,7 +263,7 @@ select, input {
     height: 35px;
 }
 
-.add-user-header {
+.add-user-header, .add-event-header {
     border-radius: 8px;
     margin-top: 15px;
     display: flex;
@@ -276,7 +276,7 @@ select, input {
     line-height: 150%; 
 }
 
-.add-user-body {
+.add-user-body, .add-event-body {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -284,7 +284,7 @@ select, input {
     min-height: 430px;
 }
 
-#add-user-details {
+#add-user-details, #add-event-details {
     display: flex;
     flex-direction: column;
     border-radius: 8px;
@@ -292,7 +292,7 @@ select, input {
     font-size: 14px;
 }
 
-.add-user, .cancel {
+.add-user, .cancel, .add-event {
     margin-top: 10px;
     color: black;
     cursor: pointer;
@@ -300,7 +300,7 @@ select, input {
     font-weight: 500;
 }
 
-#add-user-btn {
+#add-user-btn, #add-event-btn {
     background-color: #EEEEEE;
     color: #000000;
     font-size: 16px;
@@ -319,6 +319,8 @@ select, input {
 
 .add-user:hover,
 .add-user:focus,
+.add-event:hover,
+.add-event:focus,
 .cancel:hover,
 .cancel:focus {
     color: rgb(98, 88, 88);

@@ -1,5 +1,11 @@
 $(document).ready(function() {
     $('#add-user').hide();
+    $('#add-event').hide();
+
+    //adding events
+    $('#add-event-btn').on('click', function() {
+        $('#add-event').show();
+    });
 
     $('.edit-btn').on('click', function() {
         // Hide the edit button
@@ -102,6 +108,7 @@ $(document).ready(function() {
 
     $('.cancel').on('click', function() {
         $('#add-user').hide();
+        $('#add-event').hide();
     });
 
     $('#search').on('click', function() {

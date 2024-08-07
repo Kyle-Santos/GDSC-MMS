@@ -48,11 +48,54 @@
         </div>
     </div>
 
+    <div id="add-event">
+        <div class="add-content">
+            <div class="add-event-header">
+                <span id="add-img"><img src="images/add.png"></span>
+                Adding Event
+            </div>   
+            <div class="add-event-body">
+                <form id="add-event-form" action="/add-event" method="POST">
+                    <div id="add-event-details">
+                        <div class="info-item">
+                            <span class="label">Event Name</span>
+                            <input name ="eventname" id="eventname" placeholder="Event Name">
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Event Date</span>
+                            <input name="eventdate" id="eventdate" placeholder="20YY-MM-DD">
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Event Venue</span>
+                            <input name="eventvenue" id="eventvenue" placeholder="Event Venue">
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Time</span>
+                            <input name="time" id="time" placeholder="12:00 PM">
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Project Head ID #</span>
+                            <input name="projectHeadID" id="projectHeadID" placeholder="121*****">
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Attendance Count</span>
+                            <input name="attendanceCount" id="attendanceCount" placeholder="20">
+                        </div>
+                    </div> 
+                    <div class="footer">
+                        <button type="submit" class="add-event" id="submit-form">Add Event</button>
+                        <a class="cancel">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div id="main-header">
             <h2>Attendees</h2>
             <div>
-                <button onclick="location.href='/dbtester'" type="button">+ New Event</button>
+                <button id="add-event-btn">+ New Event</button>
                 <select name="event-name" id="event-name" >
                     {{#each events}}
                         <option value="{{this.name}}" id="{{this.name}}" data-eventid="{{this.eventID}}">{{this.name}}</option>
@@ -211,3 +254,4 @@
         }
     </script>
     </div>
+</div>
