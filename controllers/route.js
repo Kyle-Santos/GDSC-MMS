@@ -80,6 +80,7 @@ function add(server){
                     title: "Not Found",
                     message: "Member not found"
                 });
+                res.status(404).json({ message: 'Page not found.' });
             }
         } catch (error){
             errorFn(error);
@@ -96,7 +97,6 @@ function add(server){
                 let positions = member.map(member => member.position);
                 let uniquePositions = [...new Set(positions)];
                 let idNos = member.map(member => {
-                return member.studentId.toString().substring(0, 3);
                 });
                 let uniqueId = [...new Set(idNos)];
                 const isLoggedIn = req.cookies.isLoggedIn;
@@ -140,7 +140,6 @@ function add(server){
             let uniquePositions = [...new Set(positions)];
 
             let idNos = members.map(member => {
-                return member.studentId.toString().substring(0, 3);
             });
             let uniqueId = [...new Set(idNos)];
             let selectedMember = members[0];

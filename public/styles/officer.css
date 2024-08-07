@@ -3,65 +3,80 @@ body {
     font-family: "Inter", sans-serif;
     background-color: #2C2C2B;
     color: #E1E1E1;
-    height: 100vh
+    height: 100vh;
 }
 
-
-/*Style for top-nav*/
-.top-nav
-{
-    background-color:#E1E1E1;
+/* Style for top-nav */
+.top-nav {
+    background-color: #E1E1E1;
     color: #2C2C2B;
-    padding-top: 35px;
-    padding-bottom: 35px;
-    padding-left: 80px;
-    padding-right: 80px;
-    width: 90vw;
-    height: 20px;
-    cursor: default;
+    padding: 20px 80px; /* Adjust padding for top and bottom */
+    width: 100vw; /* Full width of the viewport */
+    box-sizing: border-box; /* Include padding in the width */
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 16px;
+    position: fixed; /* Fix position to the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+/* Organization Name Container */
+.orgname-container {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    gap: 10px;
+    width: 60%;
 }
 
 .orgname-container img {
     height: 40px;
 }
 
-.orgname-container
-{
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-    width: 60%;
-    gap: 10px;
-}
-
-.logout-btn
-{
-    background-color: #2C2C2B;
-    color:white;
-    border-radius: 8px;
-    justify-content: center;
-    margin-right:0px;
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 14px;
-    padding-bottom: 14px;
-    /* Button Shadow */
-    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
-}
-
-.logout-btn:hover
-{
+.orgname-container:hover {
     cursor: pointer;
+}
+
+/* Button Group Container */
+.top-nav-button-group-container {
+    display: flex;
+    gap: 24px; /* Adjusted gap between buttons */
+    align-items: center;
+}
+
+/* Button Styles */
+.members-btn, .events-btn, .logout-btn {
+    background-color: #E1E1E1;
+    padding: 12px 20px; /* Adjusted padding for buttons */
+    border: none;
+    border-radius: 8px; /* Rounded corners for buttons */
+    color: #2C2C2B; /* Text color */
+    font-size: 16px; /* Font size for consistency */
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.logout-btn {
+    background-color: #2C2C2B;
+    color: white;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.logout-btn:hover {
     background-color: #484848;
 }
-/*  */
 
+/* General Link Styles */
+a {
+    color: black;
+    text-decoration: none;
+}
 
-
+/* Main Container */
 .container {
     display: flex;
     flex-direction: column;
@@ -69,24 +84,15 @@ body {
     width: 90%;
     margin: 0 auto;
     padding: 20px;
+    padding-top: 80px; /* Add padding to accommodate the fixed top-nav */
 }
 
-h2 {
-    margin-top: 40px;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 110%; /* 44px */
-}
-
+/* Header */
 .header {
     color: #2C2C2B;
-
     font-size: 20px;
-    font-style: normal;
     font-weight: 500;
     line-height: 150%; /* 30px */
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -94,6 +100,7 @@ h2 {
     padding: 10px 20px;
 }
 
+/* Buttons */
 .logout-button {
     background-color: #ff4b4b;
     border: none;
@@ -102,8 +109,8 @@ h2 {
     cursor: pointer;
 }
 
+/* Content Area */
 .content {
-    align-self: center;
     display: flex;
     flex-direction: row;
     gap: 40px;
@@ -113,6 +120,7 @@ h2 {
     min-height: 500px;
 }
 
+/* Warnings Tracker */
 .warnings-tracker {
     display: flex;
     flex-direction: column;
@@ -124,6 +132,7 @@ h2 {
     gap: 17px;
 }
 
+/* Profile Card */
 .profile-card {
     border-radius: 8px;
     margin-top: 15px;
@@ -150,8 +159,8 @@ h2 {
     font-size: 16px;
     color: #666;
 }
+
 .edit-btn {
-    align-self: right;
     background-color: #007bff;
     border: none;
     color: white;
@@ -161,6 +170,7 @@ h2 {
     border-radius: 5px;
 }
 
+/* Profile Body */
 .profile-body {
     display: flex;
     flex-direction: column;
@@ -168,6 +178,7 @@ h2 {
     height: 100%;
 }
 
+/* Profile Details */
 .profile-details {
     display: flex;
     flex-direction: column;
@@ -196,10 +207,7 @@ h2 {
     font-weight: bold;
 }
 
-/* .pending {
-    color: red;
-} */
-
+/* Footer */
 .footer {
     display: flex;
     justify-content: center;
@@ -224,11 +232,12 @@ h2 {
     padding: 6px 10px;
 }
 
+/* Warnings List */
 .warnings-list {
     color: #E1E1E1;
     display: flex;
     flex-direction: column;
-    width: 70%
+    width: 70%;
 }
 
 .warnings-list table {
@@ -261,6 +270,7 @@ h2 {
     background-color: orange;
 }
 
+/* Warning Tables and Details */
 .warning-table, .warning-details {
     padding: 25px 25px;
     border-radius: 8px;

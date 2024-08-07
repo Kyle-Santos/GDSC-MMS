@@ -7,17 +7,15 @@ const login = async (req, res) => {
         const member = await Member.findOne({email});
         
         if (!member){
-            return res.redirect('/login?error=Invalid email or password');
+            return res.redirect('/login?error=Invalid email or password.');
         }
 
-        const isPasswordValid = password == member.password;
-
-        if(!isPasswordValid){
-            return res.redirect('/login?error=Invalid email or password');
+        if(password != member.password){
+            return res.redirect('/login?error=Invalid email or password.');
         }
 
-        if (member.position != "Admin"){
-            return res.redirect('/login?error=User is not an admin');
+        if (member.position == "Member"){
+            return res.redirect('/login?error=Only admins and officers may log in.');
         }
 
         const userData = JSON.stringify({
@@ -35,6 +33,10 @@ const login = async (req, res) => {
             httpOnly: false,
             maxAge: rememberMe ? 30 * 24 * 60 * 60 * 1000 : undefined // 30 days if 'rememberMe' is checked
         });
+
+        if (member.position == "Officer"){
+            return res.redirect(`/officer?studentid=${member.studentID}`);
+        }
 
         res.redirect('/');
 
